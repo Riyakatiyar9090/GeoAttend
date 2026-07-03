@@ -1,0 +1,151 @@
+.ss-card {
+  background: #fff;
+  border-radius: var(--radius-lg);
+  padding: 26px;
+  box-shadow: var(--shadow-card);
+  border: 1px solid rgba(15, 23, 42, 0.05);
+}
+.ss-card > h3 {
+  font-size: 17px;
+  margin-bottom: 22px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.ss-section {
+  margin-bottom: 24px;
+  padding-bottom: 24px;
+  border-bottom: 1px solid rgba(15, 23, 42, 0.06);
+}
+.ss-section:last-child {
+  border-bottom: none;
+  margin-bottom: 0;
+  padding-bottom: 0;
+}
+.ss-section h4 {
+  font-size: 14.5px;
+  margin-bottom: 14px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.ss-field {
+  margin-bottom: 14px;
+}
+.ss-field label {
+  display: block;
+  font-size: 12.5px;
+  font-weight: 600;
+  color: var(--text);
+  margin-bottom: 7px;
+}
+
+.ss-input-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+.ss-input-wrapper input {
+  width: 100%;
+  height: 44px;
+  padding: 0 42px 0 14px;
+  border: 1.5px solid rgba(15, 23, 42, 0.1);
+  border-radius: 10px;
+  font-size: 13.5px;
+  font-family: "Inter", sans-serif;
+  background: rgba(15, 23, 42, 0.02);
+  transition: var(--transition);
+}
+.ss-input-wrapper input:focus {
+  outline: none;
+  border-color: var(--primary);
+  box-shadow: 0 0 0 4px rgba(37, 99, 235, 0.08);
+  background: #fff;
+}
+
+.ss-eye-btn {
+  position: absolute;
+  right: 12px;
+  background: none;
+  color: var(--text-secondary);
+  font-size: 16px;
+}
+
+.ss-update-btn {
+  height: 44px;
+  padding: 0 24px;
+  background: var(--gradient-primary);
+  color: #fff;
+  font-weight: 600;
+  font-size: 13.5px;
+  border-radius: 10px;
+  transition: var(--transition);
+}
+.ss-update-btn:hover:not(:disabled) {
+  box-shadow: var(--shadow-glow);
+}
+.ss-update-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.ss-toggle-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+}
+.ss-toggle-row strong {
+  display: block;
+  font-size: 13.5px;
+  margin-bottom: 3px;
+}
+.ss-toggle-row p {
+  font-size: 12px;
+  color: var(--text-secondary);
+}
+
+.ss-session-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 0;
+  border-bottom: 1px solid rgba(15, 23, 42, 0.04);
+  gap: 12px;
+  flex-wrap: wrap;
+}
+.ss-session-row:last-child {
+  border-bottom: none;
+}
+.ss-session-row strong {
+  display: block;
+  font-size: 13px;
+  margin-bottom: 2px;
+}
+.ss-session-row span {
+  font-size: 12px;
+  color: var(--text-secondary);
+}
+
+.ss-current-badge {
+  background: rgba(16, 185, 129, 0.1);
+  color: var(--success);
+  font-size: 11.5px;
+  font-weight: 700;
+  padding: 4px 10px;
+  border-radius: 20px;
+}
+.ss-revoke-btn {
+  background: rgba(239, 68, 68, 0.07);
+  color: var(--danger);
+  font-size: 12.5px;
+  font-weight: 600;
+  padding: 6px 14px;
+  border-radius: 8px;
+  transition: var(--transition);
+}
+.ss-revoke-btn:hover {
+  background: rgba(239, 68, 68, 0.14);
+}

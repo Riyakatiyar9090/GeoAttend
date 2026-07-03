@@ -1,0 +1,51 @@
+.scanner-error-card {
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+  background: rgba(239, 68, 68, 0.05);
+  border: 1px solid rgba(239, 68, 68, 0.18);
+  border-radius: var(--radius-md);
+  padding: 18px 20px;
+}
+
+.error-icon-wrapper {
+  width: 40px;
+  height: 40px;
+  border-radius: 12px;
+  background: rgba(239, 68, 68, 0.1);
+  color: var(--danger);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+  flex-shrink: 0;
+}
+
+.scanner-error-card > div {
+  flex: 1;
+}
+.scanner-error-card h4 {
+  font-size: 14px;
+  margin-bottom: 4px;
+  color: var(--danger);
+}
+.scanner-error-card p {
+  font-size: 12.5px;
+  color: var(--text-secondary);
+  line-height: 1.5;
+}
+
+.error-retry-btn {
+  background: rgba(239, 68, 68, 0.1);
+  color: var(--danger);
+  font-size: 12.5px;
+  font-weight: 600;
+  padding: 8px 14px;
+  border-radius: var(--radius-sm);
+  white-space: nowrap;
+  flex-shrink: 0;
+  transition: var(--transition);
+}
+.error-retry-btn:hover {
+  background: rgba(239, 68, 68, 0.18);
+}

@@ -1,0 +1,120 @@
+.verification-card {
+  background: rgba(255, 255, 255, 0.75);
+  backdrop-filter: blur(16px);
+  border: 1px solid rgba(15, 23, 42, 0.06);
+  border-radius: var(--radius-lg);
+  padding: 26px;
+  box-shadow: var(--shadow-card);
+}
+
+.vc-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 22px;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+.vc-header h3 {
+  font-size: 16px;
+}
+
+.vc-status-pill {
+  font-size: 12px;
+  font-weight: 700;
+  padding: 5px 13px;
+  border-radius: 20px;
+}
+.pill-success {
+  background: rgba(16, 185, 129, 0.1);
+  color: var(--success);
+}
+.pill-danger {
+  background: rgba(239, 68, 68, 0.1);
+  color: var(--danger);
+}
+.pill-info {
+  background: rgba(37, 99, 235, 0.1);
+  color: var(--primary);
+}
+
+.vc-metrics {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+  margin-bottom: 20px;
+}
+
+.vc-metric {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: rgba(15, 23, 42, 0.025);
+  border-radius: var(--radius-sm);
+  padding: 12px;
+}
+
+.vc-metric-icon {
+  width: 34px;
+  height: 34px;
+  border-radius: 10px;
+  background: rgba(37, 99, 235, 0.08);
+  color: var(--primary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 15px;
+  flex-shrink: 0;
+}
+
+.vc-metric span {
+  display: block;
+  font-size: 11px;
+  color: var(--text-secondary);
+  margin-bottom: 2px;
+}
+.vc-metric strong {
+  font-size: 13.5px;
+  font-weight: 700;
+  color: var(--text);
+}
+.metric-good {
+  color: var(--success) !important;
+}
+.metric-bad {
+  color: var(--danger) !important;
+}
+
+.vc-progress-bar-track {
+  position: relative;
+  height: 6px;
+  background: rgba(15, 23, 42, 0.08);
+  border-radius: 6px;
+  overflow: visible;
+}
+.vc-progress-bar-fill {
+  height: 100%;
+  border-radius: 6px;
+}
+.fill-success {
+  background: var(--success);
+}
+.fill-danger {
+  background: var(--danger);
+}
+
+.vc-radius-marker {
+  position: absolute;
+  top: -4px;
+  width: 2px;
+  height: 14px;
+  background: var(--text-secondary);
+  border-radius: 2px;
+  transform: translateX(-50%);
+}
+
+@media (max-width: 480px) {
+  .vc-metrics {
+    grid-template-columns: 1fr;
+  }
+}

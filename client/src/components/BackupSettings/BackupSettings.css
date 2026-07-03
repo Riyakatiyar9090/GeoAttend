@@ -1,0 +1,76 @@
+.bs-action-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+}
+
+.bs-action-card {
+  border-radius: var(--radius-md);
+  padding: 20px;
+  background: rgba(15, 23, 42, 0.025);
+  border: 1px solid rgba(15, 23, 42, 0.07);
+  text-align: center;
+}
+.bs-action-danger {
+  background: rgba(239, 68, 68, 0.04);
+  border-color: rgba(239, 68, 68, 0.12);
+}
+
+.bs-action-icon {
+  width: 44px;
+  height: 44px;
+  border-radius: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 20px;
+  color: #fff;
+  margin: 0 auto 12px;
+}
+.bs-icon-export {
+  background: var(--gradient-primary);
+}
+.bs-icon-import {
+  background: linear-gradient(135deg, #10b981, #06b6d4);
+}
+.bs-icon-reset {
+  background: linear-gradient(135deg, #ef4444, #f59e0b);
+}
+
+.bs-action-card h4 {
+  font-size: 14px;
+  margin-bottom: 6px;
+}
+.bs-action-card p {
+  font-size: 12px;
+  color: var(--text-secondary);
+  line-height: 1.5;
+  margin-bottom: 14px;
+}
+
+.bs-btn {
+  height: 36px;
+  padding: 0 18px;
+  border-radius: 8px;
+  font-size: 13px;
+  font-weight: 600;
+  background: rgba(37, 99, 235, 0.08);
+  color: var(--primary);
+  transition: var(--transition);
+}
+.bs-btn:hover {
+  background: rgba(37, 99, 235, 0.15);
+}
+.bs-btn-danger {
+  background: rgba(239, 68, 68, 0.08);
+  color: var(--danger);
+}
+.bs-btn-danger:hover {
+  background: rgba(239, 68, 68, 0.15);
+}
+
+@media (max-width: 700px) {
+  .bs-action-grid {
+    grid-template-columns: 1fr;
+  }
+}

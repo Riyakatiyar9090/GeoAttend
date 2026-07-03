@@ -1,0 +1,122 @@
+.teacher-analytics-page {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+/* ── Header ── */
+.ta-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+.ta-header h1 {
+  font-size: 26px;
+  margin-bottom: 6px;
+}
+.ta-header p {
+  color: var(--text-secondary);
+  font-size: 14.5px;
+}
+
+.ta-header-right {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.ta-date-range {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  height: 42px;
+  padding: 0 14px;
+  background: #fff;
+  border: 1.5px solid rgba(15, 23, 42, 0.1);
+  border-radius: 10px;
+  color: var(--text-secondary);
+  font-size: 13.5px;
+}
+.ta-date-range select {
+  border: none;
+  outline: none;
+  background: none;
+  font-size: 13.5px;
+  font-family: "Inter", sans-serif;
+  color: var(--text);
+}
+
+.ta-export-btn {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  height: 42px;
+  padding: 0 18px;
+  background: var(--gradient-primary);
+  color: #fff;
+  font-weight: 600;
+  font-size: 13.5px;
+  border-radius: 10px;
+  transition: var(--transition);
+}
+.ta-export-btn:hover {
+  box-shadow: var(--shadow-glow);
+}
+
+/* ── Main layout ── */
+.ta-main-layout {
+  display: grid;
+  grid-template-columns: 1fr 300px;
+  gap: 24px;
+  align-items: start;
+}
+
+.ta-content-col {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+/* ── Charts row ── */
+.ta-charts-row {
+  display: grid;
+  grid-template-columns: 1.4fr 1fr;
+  gap: 20px;
+}
+
+/* ── Sidebar ── */
+.ta-sidebar-col {
+  position: sticky;
+  top: 100px;
+}
+
+/* ── Responsive ── */
+@media (max-width: 1300px) {
+  .ta-main-layout {
+    grid-template-columns: 1fr;
+  }
+  .ta-sidebar-col {
+    position: static;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 18px;
+  }
+}
+
+@media (max-width: 1000px) {
+  .ta-charts-row {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 700px) {
+  .ta-header {
+    flex-direction: column;
+  }
+  .ta-sidebar-col {
+    grid-template-columns: 1fr;
+  }
+}

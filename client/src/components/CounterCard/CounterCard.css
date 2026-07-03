@@ -1,0 +1,15 @@
+.counter-card {
+  text-align: center;
+}
+.counter-card h3 {
+  font-size: 42px;
+  background: var(--gradient-accent);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+.counter-card p {
+  color: #94a3b8;
+  margin-top: 8px;
+  font-size: 15px;
+}

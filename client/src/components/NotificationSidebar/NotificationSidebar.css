@@ -1,0 +1,123 @@
+.notification-sidebar {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.nsb-widget {
+  background: #fff;
+  border-radius: var(--radius-lg);
+  padding: 20px;
+  box-shadow: var(--shadow-card);
+  border: 1px solid rgba(15, 23, 42, 0.05);
+}
+
+.nsb-widget h3 {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  font-size: 14.5px;
+  margin-bottom: 14px;
+}
+.nsb-widget h3 svg {
+  color: var(--primary);
+}
+
+.nsb-activity-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.nsb-activity-row {
+  display: flex;
+  gap: 10px;
+  align-items: flex-start;
+}
+.nsb-act-emoji {
+  font-size: 18px;
+  flex-shrink: 0;
+}
+.nsb-activity-row p {
+  font-size: 12.5px;
+  font-weight: 500;
+  color: var(--text);
+  margin-bottom: 2px;
+}
+.nsb-activity-row span {
+  font-size: 11px;
+  color: var(--text-secondary);
+}
+
+.nsb-sessions-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.nsb-session-row {
+  display: flex;
+  gap: 10px;
+  align-items: flex-start;
+}
+.nsb-session-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--primary);
+  margin-top: 5px;
+  flex-shrink: 0;
+}
+.nsb-session-row strong {
+  display: block;
+  font-size: 13px;
+  margin-bottom: 2px;
+}
+.nsb-session-row span {
+  font-size: 11.5px;
+  color: var(--text-secondary);
+}
+
+.nsb-alerts-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.nsb-alert-row {
+  padding: 9px 12px;
+  border-radius: var(--radius-sm);
+  font-size: 12.5px;
+  font-weight: 600;
+}
+.nsb-danger {
+  background: rgba(239, 68, 68, 0.07);
+  color: var(--danger);
+}
+.nsb-warning {
+  background: rgba(245, 158, 11, 0.07);
+  color: var(--warning);
+}
+
+.nsb-quick-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.nsb-qa-btn {
+  height: 40px;
+  border-radius: 10px;
+  font-size: 13px;
+  font-weight: 600;
+  background: rgba(15, 23, 42, 0.04);
+  color: var(--text-secondary);
+  transition: var(--transition);
+}
+.nsb-qa-btn:hover {
+  background: rgba(37, 99, 235, 0.08);
+  color: var(--primary);
+}
+.nsb-qa-btn.primary {
+  background: var(--gradient-primary);
+  color: #fff;
+}
+.nsb-qa-btn.primary:hover {
+  box-shadow: var(--shadow-glow);
+}

@@ -1,0 +1,64 @@
+.verification-cards-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+}
+
+.vc-item {
+  background: #fff;
+  border-radius: var(--radius-md);
+  padding: 20px;
+  box-shadow: var(--shadow-card);
+  border: 1px solid rgba(15, 23, 42, 0.05);
+  display: flex;
+  gap: 14px;
+  transition: var(--transition);
+}
+.vc-item:hover {
+  box-shadow: var(--shadow-card-hover);
+}
+
+.vc-icon {
+  width: 40px;
+  height: 40px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+  flex-shrink: 0;
+}
+
+.vc-item h4 {
+  font-size: 12.5px;
+  font-weight: 700;
+  margin-bottom: 5px;
+  color: var(--text);
+}
+.vc-status {
+  font-size: 11.5px;
+  font-weight: 700;
+  display: block;
+  margin-bottom: 4px;
+}
+.vc-status-ok {
+  color: var(--success);
+}
+.vc-status-no {
+  color: var(--danger);
+}
+.vc-time {
+  font-size: 11px;
+  color: var(--text-secondary);
+}
+
+@media (max-width: 1024px) {
+  .verification-cards-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+@media (max-width: 600px) {
+  .verification-cards-grid {
+    grid-template-columns: 1fr;
+  }
+}

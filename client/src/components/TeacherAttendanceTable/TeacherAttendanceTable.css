@@ -1,0 +1,80 @@
+.teacher-table-card {
+  background: #fff;
+  border-radius: var(--radius-md);
+  padding: 28px;
+  box-shadow: var(--shadow-card);
+  border: 1px solid rgba(15, 23, 42, 0.05);
+}
+
+.table-header {
+  margin-bottom: 18px;
+}
+.table-header h3 {
+  font-size: 17px;
+}
+
+.table-scroll {
+  overflow-x: auto;
+}
+
+.teacher-attendance-table {
+  width: 100%;
+  border-collapse: collapse;
+  min-width: 620px;
+}
+
+.teacher-attendance-table th {
+  text-align: left;
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--text-secondary);
+  padding: 10px 14px;
+  border-bottom: 1px solid rgba(15, 23, 42, 0.06);
+}
+
+.teacher-attendance-table td {
+  padding: 14px;
+  font-size: 13.5px;
+  color: var(--text);
+  border-bottom: 1px solid rgba(15, 23, 42, 0.04);
+}
+
+.subject-cell {
+  font-weight: 600;
+}
+
+.pct-badge {
+  padding: 4px 12px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: 600;
+}
+.pct-good {
+  background: rgba(16, 185, 129, 0.1);
+  color: var(--success);
+}
+.pct-mid {
+  background: rgba(6, 182, 212, 0.1);
+  color: var(--accent);
+}
+.pct-low {
+  background: rgba(245, 158, 11, 0.1);
+  color: var(--warning);
+}
+
+.view-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: rgba(37, 99, 235, 0.06);
+  color: var(--primary);
+  font-size: 12.5px;
+  font-weight: 600;
+  padding: 7px 14px;
+  border-radius: var(--radius-sm);
+  transition: var(--transition);
+}
+.view-btn:hover {
+  background: rgba(37, 99, 235, 0.12);
+}

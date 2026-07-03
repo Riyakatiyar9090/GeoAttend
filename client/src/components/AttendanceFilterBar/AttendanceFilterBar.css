@@ -1,0 +1,87 @@
+.afb-card {
+  background: rgba(255, 255, 255, 0.75);
+  backdrop-filter: blur(16px);
+  border: 1px solid rgba(15, 23, 42, 0.06);
+  border-radius: var(--radius-lg);
+  padding: 20px 24px;
+  box-shadow: var(--shadow-card);
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.afb-search-group,
+.afb-filter-group {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+.afb-search-field {
+  flex: 1;
+  min-width: 180px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  height: 44px;
+  background: rgba(15, 23, 42, 0.03);
+  border: 1.5px solid rgba(15, 23, 42, 0.09);
+  border-radius: 10px;
+  padding: 0 14px;
+  transition: var(--transition);
+}
+.afb-search-field:focus-within {
+  border-color: var(--primary);
+  box-shadow: 0 0 0 4px rgba(37, 99, 235, 0.08);
+  background: #fff;
+}
+.afb-search-field svg {
+  color: var(--text-secondary);
+  flex-shrink: 0;
+  font-size: 15px;
+}
+.afb-search-field input {
+  border: none;
+  outline: none;
+  background: none;
+  font-size: 13px;
+  width: 100%;
+  font-family: "Inter", sans-serif;
+}
+
+.afb-filter-group select,
+.afb-date-input {
+  height: 44px;
+  padding: 0 14px;
+  border: 1.5px solid rgba(15, 23, 42, 0.09);
+  border-radius: 10px;
+  background: #fff;
+  font-size: 13px;
+  font-family: "Inter", sans-serif;
+  color: var(--text);
+  transition: var(--transition);
+}
+.afb-filter-group select:focus,
+.afb-date-input:focus {
+  outline: none;
+  border-color: var(--primary);
+}
+
+.afb-reset-btn {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  height: 44px;
+  padding: 0 18px;
+  background: rgba(15, 23, 42, 0.04);
+  color: var(--text-secondary);
+  font-size: 13px;
+  font-weight: 600;
+  border-radius: 10px;
+  transition: var(--transition);
+}
+.afb-reset-btn:hover {
+  background: rgba(239, 68, 68, 0.08);
+  color: var(--danger);
+}

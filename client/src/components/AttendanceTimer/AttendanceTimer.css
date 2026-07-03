@@ -1,0 +1,53 @@
+.attendance-timer-card {
+  background: #fff;
+  border-radius: var(--radius-lg);
+  padding: 26px;
+  box-shadow: var(--shadow-card);
+  border: 1px solid rgba(15, 23, 42, 0.05);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+}
+
+.timer-circle-wrapper {
+  position: relative;
+}
+
+.timer-circle-text {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.timer-circle-text span {
+  font-size: 17px;
+  font-weight: 700;
+  font-family: "Poppins", sans-serif;
+  color: var(--text);
+}
+.timer-circle-text small {
+  font-size: 10.5px;
+  color: var(--text-secondary);
+}
+
+.timer-meta {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.timer-meta div {
+  display: flex;
+  justify-content: space-between;
+  font-size: 13px;
+}
+.timer-meta span {
+  color: var(--text-secondary);
+}
+.timer-meta strong {
+  color: var(--text);
+  font-weight: 600;
+}

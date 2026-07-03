@@ -1,0 +1,60 @@
+.verification-success-card {
+  background: rgba(16, 185, 129, 0.05);
+  border: 1px solid rgba(16, 185, 129, 0.2);
+  border-radius: var(--radius-lg);
+  padding: 36px 28px;
+  text-align: center;
+}
+
+.vs-check-circle {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  background: rgba(16, 185, 129, 0.1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 20px;
+}
+
+.vs-check-svg {
+  width: 52px;
+  height: 52px;
+}
+.vs-check-svg circle {
+  stroke: var(--success);
+}
+.vs-check-svg path {
+  stroke: var(--success);
+}
+
+.verification-success-card h3 {
+  font-size: 19px;
+  color: var(--success);
+  margin-bottom: 10px;
+}
+.verification-success-card p {
+  font-size: 13.5px;
+  color: var(--text-secondary);
+  margin-bottom: 24px;
+}
+.verification-success-card p strong {
+  color: var(--text);
+}
+
+.vs-mark-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  height: 52px;
+  padding: 0 32px;
+  background: var(--gradient-primary);
+  color: #fff;
+  font-weight: 600;
+  font-size: 14.5px;
+  border-radius: var(--radius-sm);
+  transition: var(--transition);
+}
+.vs-mark-btn:hover {
+  box-shadow: var(--shadow-glow);
+}

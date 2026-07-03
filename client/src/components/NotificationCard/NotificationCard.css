@@ -1,0 +1,124 @@
+.notification-card {
+  position: relative;
+  background: #fff;
+  border-radius: var(--radius-md);
+  padding: 18px 20px;
+  box-shadow: var(--shadow-card);
+  border: 1px solid rgba(15, 23, 42, 0.05);
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+  transition: var(--transition);
+  overflow: hidden;
+}
+
+.notification-card:hover {
+  box-shadow: var(--shadow-card-hover);
+  border-color: rgba(37, 99, 235, 0.12);
+}
+
+.nc-unread {
+  border-left: 3px solid var(--primary);
+  background: rgba(37, 99, 235, 0.015);
+}
+
+.nc-unread-dot {
+  position: absolute;
+  top: 18px;
+  right: 60px;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--primary);
+}
+
+.nc-icon-col {
+  flex-shrink: 0;
+}
+.nc-emoji {
+  font-size: 26px;
+  display: block;
+}
+
+.nc-body {
+  flex: 1;
+  min-width: 0;
+}
+
+.nc-title-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 10px;
+  margin-bottom: 6px;
+  flex-wrap: wrap;
+}
+
+.nc-title-row h4 {
+  font-size: 14.5px;
+  font-weight: 700;
+  color: var(--text);
+}
+
+.nc-badge {
+  font-size: 10.5px;
+  font-weight: 700;
+  padding: 3px 9px;
+  border-radius: 20px;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.nc-desc {
+  font-size: 13px;
+  color: var(--text-secondary);
+  line-height: 1.55;
+  margin-bottom: 8px;
+}
+
+.nc-footer {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.nc-time {
+  font-size: 11.5px;
+  font-weight: 600;
+  color: var(--primary);
+}
+.nc-date {
+  font-size: 11.5px;
+  color: var(--text-secondary);
+}
+
+.nc-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  flex-shrink: 0;
+}
+
+.nc-act-btn {
+  width: 30px;
+  height: 30px;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+  transition: var(--transition);
+  background: rgba(15, 23, 42, 0.04);
+  color: var(--text-secondary);
+}
+.nc-read-btn:hover {
+  background: rgba(16, 185, 129, 0.1);
+  color: var(--success);
+}
+.nc-delete-btn:hover {
+  background: rgba(239, 68, 68, 0.1);
+  color: var(--danger);
+}
+.nc-view-btn:hover {
+  background: rgba(37, 99, 235, 0.1);
+  color: var(--primary);
+}

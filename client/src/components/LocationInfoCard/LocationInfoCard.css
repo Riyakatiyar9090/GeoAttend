@@ -1,0 +1,72 @@
+.location-info-card {
+  background: #fff;
+  border-radius: var(--radius-lg);
+  padding: 26px;
+  box-shadow: var(--shadow-card);
+  border: 1px solid rgba(15, 23, 42, 0.05);
+}
+
+.lic-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 18px;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+.lic-header h3 {
+  font-size: 15.5px;
+}
+
+.lic-result {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 12.5px;
+  font-weight: 700;
+  padding: 5px 13px;
+  border-radius: 20px;
+}
+.lic-pass {
+  background: rgba(16, 185, 129, 0.1);
+  color: var(--success);
+}
+.lic-fail {
+  background: rgba(239, 68, 68, 0.1);
+  color: var(--danger);
+}
+
+.lic-coords-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 14px;
+  margin-bottom: 18px;
+}
+
+.lic-coords-grid > div {
+  background: rgba(15, 23, 42, 0.025);
+  border-radius: var(--radius-sm);
+  padding: 12px 14px;
+}
+
+.lic-coords-label {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 11.5px;
+  color: var(--text-secondary);
+  margin-bottom: 6px;
+}
+
+code {
+  font-size: 13px;
+  font-family: "Courier New", monospace;
+  color: var(--text);
+  font-weight: 600;
+}
+.coord-good {
+  color: var(--success);
+}
+.coord-bad {
+  color: var(--danger);
+}

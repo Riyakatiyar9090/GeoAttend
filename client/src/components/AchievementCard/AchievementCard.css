@@ -1,0 +1,27 @@
+.achievement-card {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  background: linear-gradient(
+    135deg,
+    rgba(var(--ach-color), 0.08),
+    rgba(var(--ach-color), 0.03)
+  );
+  border: 1px solid rgba(var(--ach-color), 0.2);
+  border-radius: var(--radius-md);
+  padding: 16px 20px;
+  transition: var(--transition);
+}
+
+.ach-emoji {
+  font-size: 28px;
+  flex-shrink: 0;
+}
+.achievement-card h4 {
+  font-size: 14px;
+  margin-bottom: 3px;
+}
+.achievement-card p {
+  font-size: 12px;
+  color: var(--text-secondary);
+}

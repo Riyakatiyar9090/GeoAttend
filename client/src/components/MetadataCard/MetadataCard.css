@@ -1,0 +1,49 @@
+.metadata-card {
+  background: #fff;
+  border-radius: var(--radius-lg);
+  padding: 24px;
+  box-shadow: var(--shadow-card);
+  border: 1px solid rgba(15, 23, 42, 0.05);
+}
+.metadata-card h3 {
+  font-size: 15.5px;
+  margin-bottom: 16px;
+}
+
+.mc-rows {
+  display: flex;
+  flex-direction: column;
+}
+
+.mc-row {
+  display: grid;
+  grid-template-columns: 22px 170px 1fr;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 0;
+  border-bottom: 1px solid rgba(15, 23, 42, 0.04);
+}
+.mc-row:last-child {
+  border-bottom: none;
+}
+
+.mc-icon {
+  color: var(--primary);
+  font-size: 14px;
+  display: flex;
+}
+.mc-label {
+  font-size: 12.5px;
+  color: var(--text-secondary);
+}
+.mc-value {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--text);
+  text-align: right;
+}
+.mc-mono {
+  font-family: "Courier New", monospace;
+  font-size: 12px;
+  color: var(--accent);
+}

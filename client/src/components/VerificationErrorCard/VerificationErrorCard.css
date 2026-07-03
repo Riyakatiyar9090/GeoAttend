@@ -1,0 +1,119 @@
+.verification-error-card {
+  border-radius: var(--radius-lg);
+  padding: 28px;
+  text-align: center;
+}
+
+.ve-danger {
+  background: rgba(239, 68, 68, 0.05);
+  border: 1px solid rgba(239, 68, 68, 0.18);
+}
+.ve-warning {
+  background: rgba(245, 158, 11, 0.05);
+  border: 1px solid rgba(245, 158, 11, 0.18);
+}
+
+.ve-icon-wrapper {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  margin: 0 auto 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 22px;
+}
+.ve-danger .ve-icon-wrapper {
+  background: rgba(239, 68, 68, 0.1);
+  color: var(--danger);
+}
+.ve-warning .ve-icon-wrapper {
+  background: rgba(245, 158, 11, 0.1);
+  color: var(--warning);
+}
+
+.verification-error-card h3 {
+  font-size: 17px;
+  margin-bottom: 8px;
+}
+.ve-danger h3 {
+  color: var(--danger);
+}
+.ve-warning h3 {
+  color: var(--warning);
+}
+.verification-error-card > p {
+  font-size: 13px;
+  color: var(--text-secondary);
+  margin-bottom: 20px;
+  line-height: 1.6;
+  max-width: 300px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.ve-distance-info {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+  margin-bottom: 22px;
+}
+.ve-distance-info div {
+  background: rgba(15, 23, 42, 0.04);
+  border-radius: var(--radius-sm);
+  padding: 10px 8px;
+}
+.ve-distance-info span {
+  display: block;
+  font-size: 10.5px;
+  color: var(--text-secondary);
+  margin-bottom: 4px;
+}
+.ve-distance-info strong {
+  font-size: 14px;
+  font-weight: 700;
+}
+.ve-excess {
+  color: var(--danger);
+}
+
+.ve-actions {
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+}
+
+.ve-retry-btn {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  height: 46px;
+  padding: 0 24px;
+  background: var(--gradient-primary);
+  color: #fff;
+  font-weight: 600;
+  font-size: 13.5px;
+  border-radius: var(--radius-sm);
+  transition: var(--transition);
+}
+.ve-retry-btn:hover {
+  box-shadow: var(--shadow-glow);
+}
+
+.ve-map-btn {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  height: 46px;
+  padding: 0 24px;
+  background: rgba(15, 23, 42, 0.06);
+  color: var(--text-secondary);
+  font-weight: 600;
+  font-size: 13.5px;
+  border-radius: var(--radius-sm);
+  transition: var(--transition);
+}
+.ve-map-btn:hover {
+  background: rgba(37, 99, 235, 0.08);
+  color: var(--primary);
+}

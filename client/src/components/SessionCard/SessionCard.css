@@ -1,0 +1,126 @@
+.session-card {
+  background: #fff;
+  border-radius: var(--radius-md);
+  padding: 22px;
+  box-shadow: var(--shadow-card);
+  border: 1px solid rgba(15, 23, 42, 0.05);
+  transition: var(--transition);
+}
+.session-card:hover {
+  box-shadow: var(--shadow-card-hover);
+}
+
+.session-card-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 14px;
+}
+
+.session-card-icon {
+  width: 42px;
+  height: 42px;
+  border-radius: 12px;
+  background: var(--gradient-primary);
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+}
+
+.session-status {
+  font-size: 11.5px;
+  font-weight: 700;
+  padding: 4px 10px;
+  border-radius: 20px;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+.session-status-live {
+  background: rgba(239, 68, 68, 0.1);
+  color: var(--danger);
+}
+.session-status-scheduled {
+  background: rgba(245, 158, 11, 0.1);
+  color: var(--warning);
+}
+.session-status-ended {
+  background: rgba(100, 116, 139, 0.1);
+  color: var(--text-secondary);
+}
+
+.status-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--danger);
+}
+
+.session-card h4 {
+  font-size: 16px;
+  margin-bottom: 4px;
+}
+.session-class {
+  font-size: 12.5px;
+  color: var(--text-secondary);
+  margin-bottom: 16px;
+}
+
+.session-card-meta {
+  display: flex;
+  gap: 16px;
+  margin-bottom: 18px;
+}
+.session-card-meta span {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 12.5px;
+  color: var(--text-secondary);
+}
+
+.session-card-actions {
+  display: flex;
+  gap: 10px;
+}
+
+.session-start-btn {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  height: 42px;
+  background: var(--gradient-primary);
+  color: #fff;
+  font-size: 13px;
+  font-weight: 600;
+  border-radius: var(--radius-sm);
+  transition: var(--transition);
+}
+.session-start-btn:hover:not(:disabled) {
+  box-shadow: var(--shadow-glow);
+}
+.session-disabled {
+  background: rgba(15, 23, 42, 0.08);
+  color: var(--text-secondary);
+  cursor: not-allowed;
+}
+
+.session-edit-btn {
+  width: 42px;
+  height: 42px;
+  border-radius: var(--radius-sm);
+  background: rgba(15, 23, 42, 0.04);
+  color: var(--text-secondary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: var(--transition);
+}
+.session-edit-btn:hover {
+  background: rgba(37, 99, 235, 0.08);
+  color: var(--primary);
+}

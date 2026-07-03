@@ -1,0 +1,124 @@
+.student-session-card {
+  position: relative;
+  background: rgba(255, 255, 255, 0.75);
+  backdrop-filter: blur(16px);
+  border: 1px solid rgba(15, 23, 42, 0.06);
+  border-radius: var(--radius-lg);
+  padding: 24px;
+  box-shadow: var(--shadow-card);
+  transition: var(--transition);
+  overflow: hidden;
+}
+
+.student-session-card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+}
+
+.status-border-live::before {
+  background: var(--gradient-primary);
+}
+.status-border-ending-soon::before {
+  background: linear-gradient(90deg, #f59e0b, #ef4444);
+}
+.status-border-upcoming::before {
+  background: var(--gradient-accent);
+}
+
+.student-session-card:hover {
+  box-shadow:
+    var(--shadow-card-hover),
+    0 0 24px rgba(37, 99, 235, 0.1);
+}
+
+.ssc-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 14px;
+}
+
+.ssc-students-joined {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 12px;
+  color: var(--text-secondary);
+  font-weight: 600;
+}
+
+.student-session-card h3 {
+  font-size: 18px;
+  margin-bottom: 4px;
+}
+.ssc-department {
+  font-size: 12.5px;
+  color: var(--text-secondary);
+  margin-bottom: 16px;
+}
+
+.ssc-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px 16px;
+  margin-bottom: 16px;
+}
+.ssc-meta span {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 12.5px;
+  color: var(--text-secondary);
+}
+
+.ssc-countdown-row {
+  background: rgba(15, 23, 42, 0.025);
+  border-radius: var(--radius-sm);
+  padding: 10px 14px;
+  margin-bottom: 18px;
+}
+
+.ssc-actions {
+  display: flex;
+  gap: 10px;
+}
+
+.ssc-join-btn {
+  flex: 1;
+  height: 46px;
+  background: var(--gradient-primary);
+  color: #fff;
+  font-weight: 600;
+  font-size: 13.5px;
+  border-radius: var(--radius-sm);
+  transition: var(--transition);
+}
+.ssc-join-btn:hover:not(:disabled) {
+  box-shadow: var(--shadow-glow);
+}
+.ssc-join-btn:disabled {
+  background: rgba(15, 23, 42, 0.1);
+  color: var(--text-secondary);
+  cursor: not-allowed;
+}
+
+.ssc-details-btn {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 0 18px;
+  border-radius: var(--radius-sm);
+  background: rgba(15, 23, 42, 0.04);
+  color: var(--text-secondary);
+  font-size: 13px;
+  font-weight: 600;
+  transition: var(--transition);
+}
+.ssc-details-btn:hover {
+  background: rgba(37, 99, 235, 0.08);
+  color: var(--primary);
+}

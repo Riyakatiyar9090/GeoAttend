@@ -1,0 +1,27 @@
+.pie-chart-card {
+  background: #fff;
+  border-radius: var(--radius-lg);
+  padding: 26px;
+  box-shadow: var(--shadow-card);
+  border: 1px solid rgba(15, 23, 42, 0.05);
+  position: relative;
+}
+
+.pie-center-stat {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -14%);
+  text-align: center;
+  pointer-events: none;
+}
+.pie-center-stat strong {
+  display: block;
+  font-size: 20px;
+  font-family: "Poppins", sans-serif;
+  color: var(--text);
+}
+.pie-center-stat span {
+  font-size: 11px;
+  color: var(--text-secondary);
+}

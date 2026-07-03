@@ -1,0 +1,35 @@
+.analytics-panel {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.analytics-mini-card {
+  background: #fff;
+  border-radius: var(--radius-md);
+  padding: 20px;
+  box-shadow: var(--shadow-card);
+  border: 1px solid rgba(15, 23, 42, 0.05);
+}
+.analytics-mini-card h4 {
+  font-size: 14px;
+  margin-bottom: 12px;
+}
+
+.quick-stats-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.quick-stats-list div {
+  display: flex;
+  justify-content: space-between;
+  font-size: 12.5px;
+}
+.quick-stats-list span {
+  color: var(--text-secondary);
+}
+.quick-stats-list strong {
+  color: var(--text);
+  font-weight: 600;
+}

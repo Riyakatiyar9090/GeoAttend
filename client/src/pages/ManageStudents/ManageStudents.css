@@ -1,0 +1,142 @@
+.manage-students-page {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.ms-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+.ms-header h1 {
+  font-size: 26px;
+  margin-bottom: 6px;
+}
+.ms-header p {
+  color: var(--text-secondary);
+  font-size: 14.5px;
+}
+
+.ms-header-actions {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.ms-btn-outline {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  height: 42px;
+  padding: 0 16px;
+  border: 1.5px solid rgba(15, 23, 42, 0.1);
+  border-radius: 10px;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--text-secondary);
+  background: #fff;
+  transition: var(--transition);
+}
+.ms-btn-outline:hover {
+  border-color: var(--primary);
+  color: var(--primary);
+}
+
+.ms-btn-primary {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  height: 42px;
+  padding: 0 18px;
+  background: var(--gradient-primary);
+  color: #fff;
+  font-size: 13.5px;
+  font-weight: 600;
+  border-radius: 10px;
+  transition: var(--transition);
+}
+.ms-btn-primary:hover {
+  box-shadow: var(--shadow-glow);
+}
+
+.ms-summary-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 12px;
+  font-size: 13px;
+  color: var(--text-secondary);
+}
+.ms-summary-bar strong {
+  color: var(--text);
+}
+
+.ms-chip-row {
+  display: flex;
+  gap: 8px;
+}
+.ms-chip {
+  padding: 4px 12px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: 600;
+}
+.ms-chip-active {
+  background: rgba(16, 185, 129, 0.1);
+  color: var(--success);
+}
+.ms-chip-inactive {
+  background: rgba(100, 116, 139, 0.1);
+  color: var(--text-secondary);
+}
+.ms-chip-blocked {
+  background: rgba(239, 68, 68, 0.1);
+  color: var(--danger);
+}
+
+.ms-main-layout {
+  display: grid;
+  grid-template-columns: 1fr 280px;
+  gap: 22px;
+  align-items: start;
+}
+
+.ms-table-col {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+.ms-sidebar-col {
+  position: sticky;
+  top: 100px;
+}
+
+.ms-section-title h2 {
+  font-size: 18px;
+}
+
+@media (max-width: 1200px) {
+  .ms-main-layout {
+    grid-template-columns: 1fr;
+  }
+  .ms-sidebar-col {
+    position: static;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 18px;
+  }
+}
+
+@media (max-width: 800px) {
+  .ms-sidebar-col {
+    grid-template-columns: 1fr;
+  }
+  .ms-header {
+    flex-direction: column;
+  }
+}

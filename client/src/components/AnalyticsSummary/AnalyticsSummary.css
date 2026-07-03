@@ -1,0 +1,52 @@
+.as-grid {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 14px;
+}
+
+.as-card {
+  background: var(--as-grad);
+  border-radius: var(--radius-md);
+  padding: 18px;
+  color: #fff;
+  box-shadow: 0 4px 18px rgba(37, 99, 235, 0.18);
+  cursor: default;
+  transition: var(--transition);
+}
+
+.as-card-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 10px;
+}
+.as-icon {
+  font-size: 20px;
+  opacity: 0.9;
+}
+.as-card h3 {
+  font-size: 22px;
+  font-family: "Poppins", sans-serif;
+  font-weight: 700;
+  margin-bottom: 3px;
+}
+.as-card p {
+  font-size: 11px;
+  opacity: 0.82;
+}
+
+@media (max-width: 1200px) {
+  .as-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+@media (max-width: 700px) {
+  .as-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+@media (max-width: 420px) {
+  .as-grid {
+    grid-template-columns: 1fr;
+  }
+}

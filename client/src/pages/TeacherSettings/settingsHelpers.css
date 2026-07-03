@@ -1,0 +1,89 @@
+.sh-toggle-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+  padding: 14px 0;
+  border-bottom: 1px solid rgba(15, 23, 42, 0.05);
+}
+.sh-toggle-row:last-child {
+  border-bottom: none;
+}
+
+.sh-toggle-text strong {
+  display: block;
+  font-size: 13.5px;
+  color: var(--text);
+  margin-bottom: 3px;
+}
+.sh-toggle-text p {
+  font-size: 12px;
+  color: var(--text-secondary);
+}
+
+.sh-setting-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
+  padding: 14px 0;
+  border-bottom: 1px solid rgba(15, 23, 42, 0.05);
+  flex-wrap: wrap;
+}
+.sh-setting-row:last-child {
+  border-bottom: none;
+}
+
+.sh-setting-label strong {
+  display: block;
+  font-size: 13.5px;
+  color: var(--text);
+  margin-bottom: 3px;
+}
+.sh-setting-label p {
+  font-size: 12px;
+  color: var(--text-secondary);
+}
+
+.sh-setting-control {
+  flex-shrink: 0;
+}
+.sh-setting-control select,
+.sh-setting-control input[type="number"] {
+  height: 38px;
+  padding: 0 12px;
+  border: 1.5px solid rgba(15, 23, 42, 0.1);
+  border-radius: 8px;
+  background: rgba(15, 23, 42, 0.02);
+  font-size: 13px;
+  font-family: "Inter", sans-serif;
+  color: var(--text);
+  min-width: 160px;
+  transition: var(--transition);
+}
+.sh-setting-control select:focus,
+.sh-setting-control input:focus {
+  outline: none;
+  border-color: var(--primary);
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.08);
+}
+
+.sh-section-card {
+  background: #fff;
+  border-radius: var(--radius-lg);
+  padding: 26px;
+  box-shadow: var(--shadow-card);
+  border: 1px solid rgba(15, 23, 42, 0.05);
+}
+
+.sh-section-header {
+  margin-bottom: 18px;
+}
+.sh-section-header h3 {
+  font-size: 17px;
+  margin-bottom: 4px;
+}
+.sh-section-header p {
+  font-size: 13px;
+  color: var(--text-secondary);
+}

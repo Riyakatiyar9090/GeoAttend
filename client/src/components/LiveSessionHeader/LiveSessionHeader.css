@@ -1,0 +1,82 @@
+.live-session-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+.lsh-left {
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+}
+
+.lsh-back-btn {
+  width: 44px;
+  height: 44px;
+  border-radius: 12px;
+  background: #fff;
+  box-shadow: var(--shadow-card);
+  color: var(--text-secondary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+  flex-shrink: 0;
+  transition: var(--transition);
+}
+.lsh-back-btn:hover {
+  color: var(--primary);
+}
+
+.lsh-title-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 4px;
+}
+.lsh-title-row h1 {
+  font-size: 24px;
+}
+
+.live-badge-large {
+  background: rgba(239, 68, 68, 0.1);
+  color: var(--danger);
+  font-size: 12px;
+  font-weight: 700;
+  padding: 5px 12px;
+  border-radius: 20px;
+}
+
+.lsh-left p {
+  color: var(--text-secondary);
+  font-size: 14px;
+}
+
+.lsh-right {
+  background: #fff;
+  padding: 12px 22px;
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-card);
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+}
+.lsh-duration-label {
+  font-size: 11px;
+  color: var(--text-secondary);
+  margin-bottom: 2px;
+}
+.lsh-duration-value {
+  font-size: 19px;
+  font-weight: 700;
+  font-family: "Poppins", sans-serif;
+  color: var(--primary);
+}
+
+@media (max-width: 600px) {
+  .lsh-right {
+    align-items: flex-start;
+  }
+}

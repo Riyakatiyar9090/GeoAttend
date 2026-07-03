@@ -1,0 +1,66 @@
+.timeline-card {
+  background: #fff;
+  border-radius: var(--radius-md);
+  padding: 26px;
+  box-shadow: var(--shadow-card);
+  border: 1px solid rgba(15, 23, 42, 0.05);
+}
+.timeline-card h3 {
+  font-size: 16.5px;
+  margin-bottom: 20px;
+}
+
+.timeline-list {
+  position: relative;
+  padding-left: 4px;
+  border-left: 2px solid rgba(15, 23, 42, 0.06);
+}
+
+.timeline-row {
+  display: flex;
+  gap: 14px;
+  padding-bottom: 22px;
+  margin-left: -1px;
+}
+.timeline-row:last-child {
+  padding-bottom: 0;
+}
+
+.timeline-icon {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+  flex-shrink: 0;
+  background: #fff;
+  border: 2px solid;
+}
+.timeline-created {
+  color: var(--primary);
+  border-color: var(--primary);
+}
+.timeline-qr {
+  color: var(--accent);
+  border-color: var(--accent);
+}
+.timeline-closed {
+  color: var(--success);
+  border-color: var(--success);
+}
+.timeline-joined {
+  color: var(--secondary);
+  border-color: var(--secondary);
+}
+
+.timeline-text {
+  font-size: 13.5px;
+  color: var(--text);
+  font-weight: 500;
+}
+.timeline-time {
+  font-size: 11.5px;
+  color: var(--text-secondary);
+}

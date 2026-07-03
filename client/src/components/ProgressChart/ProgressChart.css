@@ -1,0 +1,26 @@
+.progress-chart-card {
+  background: #fff;
+  border-radius: var(--radius-lg);
+  padding: 24px;
+  box-shadow: var(--shadow-card);
+  border: 1px solid rgba(15, 23, 42, 0.05);
+}
+.progress-chart-card h3 {
+  font-size: 15.5px;
+  margin-bottom: 18px;
+}
+
+.pc-tooltip {
+  background: var(--dark);
+  color: #fff;
+  padding: 8px 14px;
+  border-radius: 8px;
+  font-size: 12.5px;
+}
+.pc-tooltip p {
+  font-weight: 600;
+  margin-bottom: 2px;
+}
+.pc-tooltip span {
+  color: var(--accent);
+}

@@ -1,0 +1,93 @@
+.sat-card {
+  background: #fff;
+  border-radius: var(--radius-lg);
+  padding: 24px;
+  box-shadow: var(--shadow-card);
+  border: 1px solid rgba(15, 23, 42, 0.05);
+}
+.sat-card h3 {
+  font-size: 16px;
+  margin-bottom: 18px;
+}
+.sat-list {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.sat-row {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 12px 0;
+  border-bottom: 1px solid rgba(15, 23, 42, 0.04);
+  transition: var(--transition);
+  flex-wrap: wrap;
+}
+.sat-row:last-child {
+  border-bottom: none;
+}
+.sat-row:hover {
+  background: rgba(37, 99, 235, 0.02);
+  border-radius: var(--radius-sm);
+}
+
+.sat-status-icon {
+  width: 36px;
+  height: 36px;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 16px;
+  flex-shrink: 0;
+}
+
+.sat-body {
+  flex: 1;
+  min-width: 0;
+}
+.sat-body p {
+  font-size: 13.5px;
+  margin-bottom: 2px;
+}
+.sat-body span {
+  font-size: 11.5px;
+  color: var(--text-secondary);
+}
+
+.sat-right {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 4px;
+  flex-shrink: 0;
+}
+
+.sat-badge {
+  font-size: 11.5px;
+  font-weight: 700;
+  padding: 3px 10px;
+  border-radius: 20px;
+}
+.sat-badge.present {
+  background: rgba(16, 185, 129, 0.1);
+  color: var(--success);
+}
+.sat-badge.absent {
+  background: rgba(239, 68, 68, 0.1);
+  color: var(--danger);
+}
+.sat-badge.late {
+  background: rgba(245, 158, 11, 0.1);
+  color: var(--warning);
+}
+
+.sat-verified {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 10.5px;
+  font-weight: 600;
+  color: var(--success);
+}

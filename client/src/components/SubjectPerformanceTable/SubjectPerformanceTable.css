@@ -1,0 +1,100 @@
+.spt-card {
+  background: #fff;
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-card);
+  border: 1px solid rgba(15, 23, 42, 0.05);
+  overflow: hidden;
+}
+.spt-header {
+  padding: 22px 24px 16px;
+}
+.spt-header h3 {
+  font-size: 16px;
+}
+.spt-scroll {
+  overflow-x: auto;
+}
+.spt-table {
+  width: 100%;
+  border-collapse: collapse;
+  min-width: 700px;
+}
+.spt-table thead {
+  background: rgba(15, 23, 42, 0.025);
+}
+.spt-table th {
+  text-align: left;
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--text-secondary);
+  padding: 12px 20px;
+  border-bottom: 1px solid rgba(15, 23, 42, 0.06);
+}
+.spt-table td {
+  padding: 13px 20px;
+  font-size: 13px;
+  border-bottom: 1px solid rgba(15, 23, 42, 0.04);
+}
+.spt-even td {
+  background: rgba(15, 23, 42, 0.012);
+}
+.spt-subject {
+  font-weight: 600;
+}
+.spt-faculty {
+  color: var(--text-secondary);
+  font-size: 12.5px;
+}
+.spt-missed {
+  color: var(--danger);
+  font-weight: 600;
+}
+
+.spt-pct-cell {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.spt-bar-track {
+  flex: 1;
+  height: 6px;
+  background: rgba(15, 23, 42, 0.07);
+  border-radius: 4px;
+  overflow: hidden;
+  min-width: 60px;
+}
+.spt-bar-fill {
+  height: 100%;
+  border-radius: 4px;
+}
+.spt-pct-label {
+  font-size: 12.5px;
+  font-weight: 700;
+  width: 36px;
+  text-align: right;
+}
+
+.spt-badge {
+  padding: 3px 11px;
+  border-radius: 20px;
+  font-size: 11.5px;
+  font-weight: 700;
+}
+.sp-excellent {
+  background: rgba(16, 185, 129, 0.1);
+  color: var(--success);
+}
+.sp-good {
+  background: rgba(37, 99, 235, 0.1);
+  color: var(--primary);
+}
+.sp-warning {
+  background: rgba(245, 158, 11, 0.1);
+  color: var(--warning);
+}
+.sp-critical {
+  background: rgba(239, 68, 68, 0.1);
+  color: var(--danger);
+}

@@ -1,0 +1,112 @@
+.nf-card {
+  background: rgba(255, 255, 255, 0.75);
+  backdrop-filter: blur(14px);
+  border: 1px solid rgba(15, 23, 42, 0.06);
+  border-radius: var(--radius-lg);
+  padding: 18px 22px;
+  box-shadow: var(--shadow-card);
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.nf-search {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  height: 44px;
+  background: rgba(15, 23, 42, 0.03);
+  border: 1.5px solid rgba(15, 23, 42, 0.08);
+  border-radius: 12px;
+  padding: 0 16px;
+  transition: var(--transition);
+}
+.nf-search:focus-within {
+  border-color: var(--primary);
+  box-shadow: 0 0 0 4px rgba(37, 99, 235, 0.08);
+  background: #fff;
+}
+.nf-search svg {
+  color: var(--text-secondary);
+  flex-shrink: 0;
+}
+.nf-search input {
+  border: none;
+  outline: none;
+  background: none;
+  font-size: 13.5px;
+  width: 100%;
+  font-family: "Inter", sans-serif;
+}
+
+.nf-pills-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.nf-pills {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.nf-pill {
+  height: 34px;
+  padding: 0 14px;
+  border-radius: 20px;
+  font-size: 12.5px;
+  font-weight: 600;
+  color: var(--text-secondary);
+  background: rgba(15, 23, 42, 0.04);
+  transition: var(--transition);
+}
+.nf-pill:hover {
+  background: rgba(37, 99, 235, 0.08);
+  color: var(--primary);
+}
+.nf-pill-active {
+  background: var(--gradient-primary);
+  color: #fff;
+}
+
+.nf-sort-reset {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+.nf-sort-select {
+  height: 36px;
+  padding: 0 12px;
+  border: 1.5px solid rgba(15, 23, 42, 0.09);
+  border-radius: 10px;
+  background: #fff;
+  font-size: 12.5px;
+  font-family: "Inter", sans-serif;
+  color: var(--text);
+}
+.nf-sort-select:focus {
+  outline: none;
+  border-color: var(--primary);
+}
+
+.nf-clear-btn {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  height: 36px;
+  padding: 0 14px;
+  background: rgba(15, 23, 42, 0.04);
+  color: var(--text-secondary);
+  font-size: 12.5px;
+  font-weight: 600;
+  border-radius: 10px;
+  transition: var(--transition);
+}
+.nf-clear-btn:hover {
+  background: rgba(239, 68, 68, 0.08);
+  color: var(--danger);
+}

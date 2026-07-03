@@ -1,0 +1,51 @@
+.filter-panel {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+.filter-panel select {
+  height: 42px;
+  padding: 0 14px;
+  border: 1.5px solid rgba(15, 23, 42, 0.1);
+  border-radius: 10px;
+  background: #fff;
+  font-size: 13px;
+  font-family: "Inter", sans-serif;
+  color: var(--text);
+  transition: var(--transition);
+}
+.filter-panel select:focus {
+  outline: none;
+  border-color: var(--primary);
+}
+
+.fp-reset-btn,
+.fp-export-btn {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  height: 42px;
+  padding: 0 16px;
+  border-radius: 10px;
+  font-size: 13px;
+  font-weight: 600;
+  transition: var(--transition);
+}
+
+.fp-reset-btn {
+  background: rgba(15, 23, 42, 0.04);
+  color: var(--text-secondary);
+}
+.fp-reset-btn:hover {
+  background: rgba(15, 23, 42, 0.08);
+}
+
+.fp-export-btn {
+  background: var(--gradient-primary);
+  color: #fff;
+}
+.fp-export-btn:hover {
+  box-shadow: var(--shadow-glow);
+}

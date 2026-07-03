@@ -1,0 +1,83 @@
+.ag-card {
+  background: #fff;
+  border-radius: var(--radius-lg);
+  padding: 22px;
+  box-shadow: var(--shadow-card);
+  border: 1px solid rgba(15, 23, 42, 0.05);
+}
+.ag-card h3 {
+  font-size: 15px;
+  margin-bottom: 16px;
+}
+
+.ag-circle-wrapper {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  margin-bottom: 14px;
+}
+.ag-center {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.ag-center strong {
+  font-size: 20px;
+  font-family: "Poppins", sans-serif;
+}
+.ag-center span {
+  font-size: 10.5px;
+  color: var(--text-secondary);
+}
+.ag-good {
+  color: var(--success);
+}
+.ag-bad {
+  color: var(--danger);
+}
+
+.ag-legend {
+  display: flex;
+  gap: 14px;
+  flex-wrap: wrap;
+  font-size: 12px;
+  color: var(--text-secondary);
+  margin-bottom: 14px;
+}
+.ag-legend div {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+.ag-dot {
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+}
+.ag-current-dot {
+  background: var(--success);
+}
+.ag-target-dot {
+  background: #f59e0b;
+}
+
+.ag-result {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 11px 14px;
+  border-radius: var(--radius-sm);
+  font-size: 12.5px;
+  font-weight: 600;
+}
+.ag-result-pass {
+  background: rgba(16, 185, 129, 0.07);
+  color: var(--success);
+}
+.ag-result-fail {
+  background: rgba(239, 68, 68, 0.07);
+  color: var(--danger);
+}

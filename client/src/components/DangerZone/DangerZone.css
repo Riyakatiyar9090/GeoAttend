@@ -1,0 +1,199 @@
+.danger-zone-card {
+  background: rgba(239, 68, 68, 0.03);
+  border: 1.5px solid rgba(239, 68, 68, 0.18);
+  border-radius: var(--radius-lg);
+  padding: 24px;
+  box-shadow: var(--shadow-card);
+}
+
+.dz-header {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+  margin-bottom: 20px;
+}
+.dz-header-icon {
+  color: var(--danger);
+  font-size: 22px;
+  margin-top: 2px;
+  flex-shrink: 0;
+}
+.dz-header h3 {
+  font-size: 17px;
+  color: var(--danger);
+  margin-bottom: 3px;
+}
+.dz-header p {
+  font-size: 12.5px;
+  color: var(--text-secondary);
+}
+
+.dz-actions-list {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.dz-action-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+  padding: 14px 0;
+  border-bottom: 1px solid rgba(239, 68, 68, 0.08);
+  flex-wrap: wrap;
+}
+.dz-action-row:last-child {
+  border-bottom: none;
+}
+
+.dz-action-info strong {
+  display: block;
+  font-size: 13.5px;
+  margin-bottom: 3px;
+}
+.dz-action-info p {
+  font-size: 12px;
+  color: var(--text-secondary);
+  max-width: 480px;
+}
+
+.dz-btn {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  height: 38px;
+  padding: 0 16px;
+  border-radius: 8px;
+  font-size: 13px;
+  font-weight: 600;
+  flex-shrink: 0;
+  transition: var(--transition);
+}
+.dz-btn-danger {
+  background: rgba(239, 68, 68, 0.1);
+  color: var(--danger);
+  border: 1px solid rgba(239, 68, 68, 0.2);
+}
+.dz-btn-danger:hover {
+  background: rgba(239, 68, 68, 0.18);
+  box-shadow: 0 0 16px rgba(239, 68, 68, 0.25);
+}
+.dz-btn-warning {
+  background: rgba(245, 158, 11, 0.1);
+  color: var(--warning);
+  border: 1px solid rgba(245, 158, 11, 0.2);
+}
+.dz-btn-warning:hover {
+  background: rgba(245, 158, 11, 0.18);
+}
+
+/* Modal */
+.dz-modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(15, 23, 42, 0.5);
+  backdrop-filter: blur(4px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  padding: 20px;
+}
+
+.dz-modal-card {
+  background: #fff;
+  border-radius: var(--radius-lg);
+  padding: 36px 32px;
+  max-width: 400px;
+  width: 100%;
+  text-align: center;
+  box-shadow: var(--shadow-card-hover);
+  position: relative;
+}
+
+.dz-modal-close {
+  position: absolute;
+  top: 14px;
+  right: 14px;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background: rgba(15, 23, 42, 0.04);
+  color: var(--text-secondary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.dz-modal-icon {
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background: rgba(239, 68, 68, 0.1);
+  color: var(--danger);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 22px;
+  margin: 0 auto 16px;
+}
+
+.dz-modal-card h3 {
+  font-size: 18px;
+  margin-bottom: 10px;
+}
+.dz-modal-card > p {
+  font-size: 13.5px;
+  color: var(--text-secondary);
+  line-height: 1.6;
+  margin-bottom: 24px;
+}
+
+.dz-modal-actions {
+  display: flex;
+  gap: 12px;
+}
+
+.dz-cancel-btn {
+  flex: 1;
+  height: 46px;
+  border: 1.5px solid rgba(15, 23, 42, 0.12);
+  border-radius: var(--radius-sm);
+  font-weight: 600;
+  font-size: 13.5px;
+  color: var(--text-secondary);
+  transition: var(--transition);
+}
+.dz-cancel-btn:hover:not(:disabled) {
+  border-color: var(--text);
+  color: var(--text);
+}
+
+.dz-confirm-btn {
+  flex: 1;
+  height: 46px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+  font-weight: 600;
+  font-size: 13.5px;
+  border-radius: var(--radius-sm);
+  transition: var(--transition);
+}
+.dz-danger {
+  background: var(--danger);
+  color: #fff;
+}
+.dz-danger:hover:not(:disabled) {
+  box-shadow: 0 0 20px rgba(239, 68, 68, 0.4);
+}
+.dz-warning {
+  background: var(--warning);
+  color: #fff;
+}
+.dz-confirm-btn:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+}

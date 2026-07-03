@@ -1,0 +1,108 @@
+.teacher-profile-page {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+/* ── Header ── */
+.tp-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  gap: 14px;
+}
+.tp-header h1 {
+  font-size: 26px;
+  margin-bottom: 6px;
+}
+.tp-header p {
+  color: var(--text-secondary);
+  font-size: 14.5px;
+}
+
+.tp-header-actions {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.tp-save-btn {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  height: 42px;
+  padding: 0 20px;
+  background: var(--gradient-primary);
+  color: #fff;
+  font-size: 13.5px;
+  font-weight: 600;
+  border-radius: 10px;
+  transition: var(--transition);
+}
+.tp-save-btn:hover {
+  box-shadow: var(--shadow-glow);
+}
+
+.tp-delete-btn {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  height: 42px;
+  padding: 0 16px;
+  background: rgba(239, 68, 68, 0.07);
+  color: var(--danger);
+  font-size: 13.5px;
+  font-weight: 600;
+  border-radius: 10px;
+  border: 1.5px solid rgba(239, 68, 68, 0.15);
+  transition: var(--transition);
+}
+.tp-delete-btn:hover {
+  background: rgba(239, 68, 68, 0.13);
+}
+
+/* ── Main grid ── */
+.tp-main-grid {
+  display: grid;
+  grid-template-columns: 1.4fr 1fr;
+  gap: 24px;
+  align-items: start;
+}
+
+.tp-left-col,
+.tp-right-col {
+  display: flex;
+  flex-direction: column;
+  gap: 22px;
+}
+.tp-right-col {
+  position: sticky;
+  top: 100px;
+}
+
+/* ── Responsive ── */
+@media (max-width: 1100px) {
+  .tp-main-grid {
+    grid-template-columns: 1fr;
+  }
+  .tp-right-col {
+    position: static;
+  }
+}
+
+@media (max-width: 600px) {
+  .tp-header {
+    flex-direction: column;
+  }
+  .tp-header-actions {
+    flex-direction: column;
+    width: 100%;
+  }
+  .tp-save-btn,
+  .tp-delete-btn {
+    width: 100%;
+    justify-content: center;
+  }
+}

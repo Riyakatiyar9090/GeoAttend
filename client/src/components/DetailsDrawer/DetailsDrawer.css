@@ -1,0 +1,138 @@
+.drawer-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(15, 23, 42, 0.45);
+  backdrop-filter: blur(2px);
+  z-index: 998;
+}
+
+.details-drawer {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  width: 420px;
+  background: #fff;
+  z-index: 999;
+  display: flex;
+  flex-direction: column;
+  box-shadow: -8px 0 32px rgba(15, 23, 42, 0.12);
+}
+
+.drawer-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 24px 28px;
+  border-bottom: 1px solid rgba(15, 23, 42, 0.06);
+}
+.drawer-header h3 {
+  font-size: 16px;
+}
+
+.drawer-close-btn {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: rgba(15, 23, 42, 0.04);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--text-secondary);
+  transition: var(--transition);
+}
+.drawer-close-btn:hover {
+  background: rgba(239, 68, 68, 0.08);
+  color: var(--danger);
+}
+
+.drawer-body {
+  flex: 1;
+  overflow-y: auto;
+  padding: 28px;
+}
+
+.drawer-title-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 24px;
+}
+.drawer-title-row h2 {
+  font-size: 21px;
+  max-width: 240px;
+}
+
+.drawer-section {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin-bottom: 28px;
+}
+
+.drawer-row {
+  display: flex;
+  gap: 12px;
+}
+.drawer-row svg {
+  color: var(--primary);
+  font-size: 16px;
+  margin-top: 2px;
+  flex-shrink: 0;
+}
+.drawer-row span {
+  display: block;
+  font-size: 11.5px;
+  color: var(--text-secondary);
+  margin-bottom: 2px;
+}
+.drawer-row strong {
+  font-size: 14px;
+  color: var(--text);
+}
+
+.drawer-instructions,
+.drawer-rules {
+  background: rgba(15, 23, 42, 0.025);
+  border-radius: var(--radius-sm);
+  padding: 16px;
+  margin-bottom: 18px;
+}
+.drawer-instructions h4,
+.drawer-rules h4 {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 13.5px;
+  margin-bottom: 10px;
+}
+.drawer-instructions p {
+  font-size: 13px;
+  color: var(--text-secondary);
+  line-height: 1.6;
+}
+
+.drawer-rules ul {
+  padding-left: 18px;
+}
+.drawer-rules li {
+  font-size: 13px;
+  color: var(--text-secondary);
+  line-height: 1.8;
+}
+
+.drawer-close-bottom-btn {
+  margin: 20px 28px 28px;
+  height: 48px;
+  border-radius: var(--radius-sm);
+  background: var(--gradient-primary);
+  color: #fff;
+  font-weight: 600;
+  font-size: 14px;
+}
+
+@media (max-width: 600px) {
+  .details-drawer {
+    width: 100%;
+  }
+}

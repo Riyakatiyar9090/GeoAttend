@@ -1,0 +1,27 @@
+.pi-card {
+  background: #fff;
+  border-radius: var(--radius-lg);
+  padding: 26px;
+  box-shadow: var(--shadow-card);
+  border: 1px solid rgba(15, 23, 42, 0.05);
+}
+.pi-card h3 {
+  font-size: 17px;
+  margin-bottom: 4px;
+}
+.pi-subtitle {
+  font-size: 13px;
+  color: var(--text-secondary);
+  margin-bottom: 22px;
+}
+.pi-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  margin-bottom: 22px;
+}
+@media (max-width: 600px) {
+  .pi-grid {
+    grid-template-columns: 1fr;
+  }
+}

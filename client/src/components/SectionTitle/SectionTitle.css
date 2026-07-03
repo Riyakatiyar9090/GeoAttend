@@ -1,0 +1,39 @@
+.section-title {
+  text-align: center;
+  max-width: 640px;
+  margin: 0 auto 56px;
+}
+
+.eyebrow {
+  display: inline-block;
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--primary);
+  background: rgba(37, 99, 235, 0.08);
+  padding: 6px 14px;
+  border-radius: 20px;
+  margin-bottom: 16px;
+}
+
+.section-title h2 {
+  font-size: 36px;
+  margin-bottom: 14px;
+}
+
+.section-title p {
+  color: var(--text-secondary);
+  font-size: 17px;
+}
+
+.section-title.light .eyebrow {
+  background: rgba(255, 255, 255, 0.1);
+  color: var(--accent);
+}
+.section-title.light h2 {
+  color: #fff;
+}
+.section-title.light p {
+  color: #94a3b8;
+}

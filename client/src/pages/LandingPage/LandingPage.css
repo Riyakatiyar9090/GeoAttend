@@ -1,0 +1,73 @@
+/* ============================================
+   GeoAttend — Landing Page Styles
+   ============================================ */
+
+/* ---------- Features Section ---------- */
+.features-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+
+/* ---------- Stats / Impact Section ---------- */
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 24px;
+}
+
+/* ---------- Final CTA Section ---------- */
+.final-cta {
+  text-align: center;
+}
+
+.final-cta h2 {
+  color: #fff;
+  font-size: 36px;
+  margin-bottom: 16px;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.final-cta p {
+  color: #94a3b8;
+  font-size: 16px;
+  margin-bottom: 32px;
+}
+
+/* ============================================
+   Responsive
+   ============================================ */
+@media (max-width: 900px) {
+  .features-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .stats-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .final-cta h2 {
+    font-size: 30px;
+  }
+}
+
+@media (max-width: 600px) {
+  .features-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .stats-grid {
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+
+  .final-cta h2 {
+    font-size: 24px;
+  }
+
+  .final-cta p {
+    font-size: 14px;
+  }
+}

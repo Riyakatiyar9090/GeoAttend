@@ -1,0 +1,168 @@
+.attendance-report-page {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+/* ── Header ── */
+.ar-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+.ar-header h1 {
+  font-size: 26px;
+  margin-bottom: 6px;
+}
+.ar-header p {
+  color: var(--text-secondary);
+  font-size: 14.5px;
+}
+
+.ar-header-right {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 10px;
+}
+
+.ar-date {
+  font-size: 12.5px;
+  color: var(--text-secondary);
+  background: #fff;
+  padding: 7px 14px;
+  border-radius: 20px;
+  box-shadow: var(--shadow-card);
+}
+
+.ar-export-btns {
+  display: flex;
+  gap: 10px;
+}
+.ar-export-btns button {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  height: 40px;
+  padding: 0 16px;
+  border-radius: 10px;
+  font-size: 13px;
+  font-weight: 600;
+  transition: var(--transition);
+}
+.ar-export-btns button:first-child {
+  background: var(--gradient-primary);
+  color: #fff;
+}
+.ar-export-btns button:first-child:hover {
+  box-shadow: var(--shadow-glow);
+}
+.ar-export-btns button:last-child {
+  background: rgba(37, 99, 235, 0.07);
+  color: var(--primary);
+}
+.ar-export-btns button:last-child:hover {
+  background: rgba(37, 99, 235, 0.13);
+}
+
+/* ── Skeleton row ── */
+.ar-skeleton-row {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 18px;
+}
+
+/* ── Summary bar ── */
+.ar-summary-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 12px;
+  font-size: 13px;
+  color: var(--text-secondary);
+}
+.ar-summary-bar strong {
+  color: var(--text);
+}
+
+.ar-chip-row {
+  display: flex;
+  gap: 8px;
+}
+.ar-chip {
+  padding: 4px 12px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: 600;
+}
+.ar-chip-present {
+  background: rgba(16, 185, 129, 0.1);
+  color: var(--success);
+}
+.ar-chip-absent {
+  background: rgba(239, 68, 68, 0.1);
+  color: var(--danger);
+}
+.ar-chip-late {
+  background: rgba(245, 158, 11, 0.1);
+  color: var(--warning);
+}
+
+/* ── Main layout ── */
+.ar-main-layout {
+  display: grid;
+  grid-template-columns: 1fr 320px;
+  gap: 24px;
+  align-items: start;
+}
+
+.ar-table-col {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+.ar-insights-col {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+/* ── Responsive ── */
+@media (max-width: 1300px) {
+  .ar-main-layout {
+    grid-template-columns: 1fr;
+  }
+  .ar-insights-col {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 18px;
+  }
+}
+
+@media (max-width: 900px) {
+  .ar-insights-col {
+    grid-template-columns: 1fr;
+  }
+  .ar-skeleton-row {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .ar-header {
+    flex-direction: column;
+  }
+  .ar-header-right {
+    align-items: flex-start;
+  }
+}
+
+@media (max-width: 600px) {
+  .ar-export-btns {
+    flex-direction: column;
+  }
+  .ar-summary-bar {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}

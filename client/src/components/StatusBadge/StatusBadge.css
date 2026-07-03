@@ -1,0 +1,37 @@
+.status-badge-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 5px 12px;
+  border-radius: 20px;
+  font-size: 11.5px;
+  font-weight: 700;
+}
+
+.badge-live {
+  background: rgba(16, 185, 129, 0.1);
+  color: var(--success);
+}
+.badge-ending {
+  background: rgba(245, 158, 11, 0.1);
+  color: var(--warning);
+}
+.badge-upcoming {
+  background: rgba(37, 99, 235, 0.1);
+  color: var(--primary);
+}
+.badge-completed {
+  background: rgba(100, 116, 139, 0.1);
+  color: var(--text-secondary);
+}
+
+.badge-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--success);
+}
+
+.badge-emoji {
+  font-size: 10px;
+}

@@ -1,0 +1,108 @@
+.summary-modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(15, 23, 42, 0.55);
+  backdrop-filter: blur(4px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1100;
+  padding: 20px;
+}
+
+.summary-modal-card {
+  background: #fff;
+  border-radius: var(--radius-lg);
+  padding: 36px;
+  max-width: 440px;
+  width: 100%;
+  box-shadow: var(--shadow-card-hover);
+}
+
+.summary-modal-card h3 {
+  font-size: 21px;
+  margin-bottom: 6px;
+}
+.summary-modal-subtitle {
+  font-size: 13.5px;
+  color: var(--text-secondary);
+  margin-bottom: 26px;
+}
+
+.summary-stats-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 12px;
+  margin-bottom: 28px;
+}
+
+.summary-stat {
+  text-align: center;
+  padding: 16px 8px;
+  border-radius: var(--radius-sm);
+  background: rgba(15, 23, 42, 0.025);
+}
+.summary-stat strong {
+  display: block;
+  font-size: 20px;
+  font-family: "Poppins", sans-serif;
+  margin-bottom: 4px;
+}
+.summary-stat span {
+  font-size: 11px;
+  color: var(--text-secondary);
+}
+.summary-stat.present strong {
+  color: var(--success);
+}
+.summary-stat.absent strong {
+  color: var(--danger);
+}
+.summary-stat.late strong {
+  color: var(--warning);
+}
+.summary-stat.pct strong {
+  color: var(--primary);
+}
+
+.summary-modal-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.summary-export-btn,
+.summary-report-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  height: 46px;
+  border-radius: var(--radius-sm);
+  font-weight: 600;
+  font-size: 13.5px;
+  background: rgba(37, 99, 235, 0.06);
+  color: var(--primary);
+  transition: var(--transition);
+}
+.summary-export-btn:hover,
+.summary-report-btn:hover {
+  background: rgba(37, 99, 235, 0.12);
+}
+
+.summary-finish-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  height: 50px;
+  border-radius: var(--radius-sm);
+  font-weight: 600;
+  font-size: 14px;
+  background: var(--gradient-primary);
+  color: #fff;
+  transition: var(--transition);
+}
+.summary-finish-btn:hover {
+  box-shadow: var(--shadow-glow);
+}

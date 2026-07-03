@@ -1,0 +1,58 @@
+.analytics-insights-card {
+  background: #fff;
+  border-radius: var(--radius-lg);
+  padding: 24px;
+  box-shadow: var(--shadow-card);
+  border: 1px solid rgba(15, 23, 42, 0.05);
+}
+.analytics-insights-card h3 {
+  font-size: 15.5px;
+  margin-bottom: 4px;
+}
+.ai-subtitle {
+  font-size: 12px;
+  color: var(--text-secondary);
+  margin-bottom: 18px;
+}
+
+.ai-insights-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.ai-insight-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 13px 16px;
+  border-radius: var(--radius-sm);
+  font-size: 13px;
+  font-weight: 500;
+}
+
+.insight-success {
+  background: rgba(16, 185, 129, 0.06);
+  color: var(--success);
+}
+.insight-primary {
+  background: rgba(37, 99, 235, 0.06);
+  color: var(--primary);
+}
+.insight-warning {
+  background: rgba(245, 158, 11, 0.06);
+  color: var(--warning);
+}
+.insight-danger {
+  background: rgba(239, 68, 68, 0.06);
+  color: var(--danger);
+}
+
+.ai-insight-row p {
+  flex: 1;
+  line-height: 1.5;
+}
+.ai-emoji {
+  font-size: 18px;
+  flex-shrink: 0;
+}
