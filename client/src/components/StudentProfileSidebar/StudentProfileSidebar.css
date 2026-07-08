@@ -1,0 +1,101 @@
+.spsb-sidebar {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.spsb-widget {
+  background: #fff;
+  border-radius: var(--radius-lg);
+  padding: 20px;
+  box-shadow: var(--shadow-card);
+  border: 1px solid rgba(15, 23, 42, 0.05);
+}
+.spsb-widget h3 {
+  font-size: 14.5px;
+  margin-bottom: 14px;
+}
+
+.spsb-stats-list {
+  display: flex;
+  flex-direction: column;
+}
+.spsb-stat-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 9px 0;
+  border-bottom: 1px solid rgba(15, 23, 42, 0.05);
+  font-size: 13px;
+}
+.spsb-stat-row:last-child {
+  border-bottom: none;
+}
+.spsb-stat-row span {
+  color: var(--text-secondary);
+}
+.spsb-stat-row strong {
+  font-size: 16px;
+  font-family: "Poppins", sans-serif;
+}
+
+.spsb-upcoming-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.spsb-upcoming-row {
+  display: flex;
+  gap: 10px;
+  align-items: flex-start;
+}
+.spsb-upcoming-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--accent);
+  margin-top: 5px;
+  flex-shrink: 0;
+}
+.spsb-upcoming-row strong {
+  display: block;
+  font-size: 12.5px;
+  margin-bottom: 2px;
+}
+.spsb-upcoming-row span {
+  font-size: 11.5px;
+  color: var(--text-secondary);
+}
+
+.spsb-achievements-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.spsb-achievement-row {
+  display: flex;
+  gap: 10px;
+  align-items: flex-start;
+  padding: 10px;
+  border-radius: var(--radius-sm);
+}
+.ach-earned {
+  background: rgba(37, 99, 235, 0.05);
+}
+.ach-locked {
+  background: rgba(15, 23, 42, 0.025);
+  opacity: 0.65;
+}
+.spsb-achievement-row > span {
+  font-size: 20px;
+  flex-shrink: 0;
+}
+.spsb-achievement-row strong {
+  display: block;
+  font-size: 12.5px;
+  margin-bottom: 2px;
+}
+.spsb-achievement-row div span {
+  font-size: 11.5px;
+  color: var(--text-secondary);
+}

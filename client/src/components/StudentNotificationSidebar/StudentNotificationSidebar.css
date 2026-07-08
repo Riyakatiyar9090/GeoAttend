@@ -1,0 +1,136 @@
+.snsb-sidebar {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.snsb-widget {
+  background: #fff;
+  border-radius: var(--radius-lg);
+  padding: 20px;
+  box-shadow: var(--shadow-card);
+  border: 1px solid rgba(15, 23, 42, 0.05);
+}
+.snsb-widget h3 {
+  font-size: 14.5px;
+  margin-bottom: 14px;
+  display: flex;
+  align-items: center;
+  gap: 7px;
+}
+.snsb-widget h3 svg {
+  color: var(--primary);
+}
+
+.snsb-att-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.snsb-att-row {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+.snsb-att-emoji {
+  font-size: 18px;
+  flex-shrink: 0;
+}
+.snsb-att-row strong {
+  display: block;
+  font-size: 13px;
+  margin-bottom: 2px;
+}
+.snsb-att-row span {
+  font-size: 11.5px;
+}
+.snsb-present {
+  color: var(--success);
+  font-weight: 600;
+}
+.snsb-absent {
+  color: var(--danger);
+  font-weight: 600;
+}
+
+.snsb-class-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.snsb-class-row {
+  display: flex;
+  gap: 10px;
+  align-items: flex-start;
+}
+.snsb-class-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--primary);
+  margin-top: 5px;
+  flex-shrink: 0;
+}
+.snsb-class-row strong {
+  display: block;
+  font-size: 13px;
+  margin-bottom: 2px;
+}
+.snsb-class-row span {
+  font-size: 11.5px;
+  color: var(--text-secondary);
+}
+
+.snsb-activity-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.snsb-activity-row {
+  display: flex;
+  gap: 10px;
+}
+.snsb-act-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--accent);
+  margin-top: 5px;
+  flex-shrink: 0;
+}
+.snsb-activity-row p {
+  font-size: 12.5px;
+  color: var(--text);
+  margin-bottom: 2px;
+  font-weight: 500;
+}
+.snsb-activity-row span {
+  font-size: 11px;
+  color: var(--text-secondary);
+}
+
+.snsb-quick-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.snsb-qa-btn {
+  height: 40px;
+  border-radius: 10px;
+  font-size: 13px;
+  font-weight: 600;
+  background: rgba(15, 23, 42, 0.04);
+  color: var(--text-secondary);
+  transition: var(--transition);
+}
+.snsb-qa-btn:hover {
+  background: rgba(37, 99, 235, 0.08);
+  color: var(--primary);
+}
+.snsb-qa-btn.primary {
+  background: var(--gradient-primary);
+  color: #fff;
+}
+.snsb-qa-btn.primary:hover {
+  box-shadow: var(--shadow-glow);
+}

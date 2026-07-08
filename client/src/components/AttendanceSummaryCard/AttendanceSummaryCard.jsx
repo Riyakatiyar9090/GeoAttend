@@ -1,64 +1,90 @@
 import { motion } from "framer-motion";
-import {
-  FiUser,
-  FiHash,
-  FiBookOpen,
-  FiUserCheck,
-  FiMapPin,
-  FiTag,
-} from "react-icons/fi";
+import { FiCheckSquare, FiXSquare, FiZap, FiTrendingUp } from "react-icons/fi";
+import ProgressCircle from "../ProgressCircle/ProgressCircle";
+import useCountUp from "../../hooks/useCountUp";
 import "./AttendanceSummaryCard.css";
 
-export default function AttendanceSummaryCard({ student, session, markedAt }) {
-  const rows = [
-    { icon: <FiUser />, label: "Student Name", value: student.name },
-    { icon: <FiHash />, label: "Roll Number", value: student.rollNumber },
-    { icon: <FiBookOpen />, label: "Subject", value: session.subject },
-    { icon: <FiUserCheck />, label: "Faculty", value: session.teacher },
-    { icon: <FiTag />, label: "Department", value: session.department },
-    { icon: <FiMapPin />, label: "Room", value: session.room },
-    { icon: <FiHash />, label: "Session ID", value: session.sessionId },
-  ];
-
+function StatItem({ icon, label, value, suffix, color, index }) {
+  const { count, ref } = useCountUp(value, 1000);
   return (
     <motion.div
-      className="attendance-summary-card"
-      initial={{ opacity: 0, y: 20 }}
+      className="asc-stat"
+      ref={ref}
+      initial={{ opacity: 0, y: 12 }}
       animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.5, delay: 0.3 }}
+      transition={{ delay: index * 0.08 }}
+      whileHover={{ y: -3 }}
     >
-      <div className="asc-header">
-        <h3>Attendance Summary</h3>
-        <span className="asc-present-badge">✅ Present</span>
+      <span
+        className="asc-stat-icon"
+        style={{ color, background: `${color}18` }}
+      >
+        {icon}
+      </span>
+      <div>
+        <h3>
+          {count}
+          {suffix}
+        </h3>
+        <p>{label}</p>
       </div>
+    </motion.div>
+  );
+}
 
-      <div className="asc-rows">
-        {rows.map((r) => (
-          <div key={r.label} className="asc-row">
-            <span className="asc-icon">{r.icon}</span>
-            <span className="asc-label">{r.label}</span>
-            <span className="asc-value">{r.value}</span>
-          </div>
-        ))}
-        <div className="asc-row">
-          <span className="asc-icon">
-            <FiTag />
-          </span>
-          <span className="asc-label">Marked At</span>
-          <span className="asc-value">{markedAt}</span>
+export default function AttendanceSummaryCard({ student }) {
+  return (
+    <motion.div
+      className="asc-wrapper"
+      initial={{ opacity: 0, y: 16 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.5, delay: 0.15 }}
+    >
+      <h3>Attendance Summary</h3>
+      <div className="asc-inner">
+        <div className="asc-circle-col">
+          <ProgressCircle
+            percentage={student.attendance}
+            size={110}
+            strokeWidth={9}
+            color="var(--success)"
+            label="Overall"
+          />
         </div>
-      </div>
-
-      <div className="asc-verification-row">
-        <span className="asc-verify-chip">
-          <span>🔳</span> QR Verified
-        </span>
-        <span className="asc-verify-chip">
-          <span>📍</span> Location Verified
-        </span>
-        <span className="asc-verify-chip">
-          <span>🌐</span> Connected
-        </span>
+        <div className="asc-stats-grid">
+          <StatItem
+            icon={<FiCheckSquare />}
+            label="Classes Attended"
+            value={student.attended}
+            suffix=""
+            color="var(--success)"
+            index={0}
+          />
+          <StatItem
+            icon={<FiXSquare />}
+            label="Classes Missed"
+            value={student.missed}
+            suffix=""
+            color="var(--danger)"
+            index={1}
+          />
+          <StatItem
+            icon={<FiZap />}
+            label="Current Streak"
+            value={student.streak}
+            suffix=" days"
+            color="var(--primary)"
+            index={2}
+          />
+          <StatItem
+            icon={<FiTrendingUp />}
+            label="Longest Streak"
+            value={student.longestStreak}
+            suffix=" days"
+            color="var(--accent)"
+            index={3}
+          />
+        </div>
       </div>
     </motion.div>
   );

@@ -1,0 +1,35 @@
+.sat-tl-card {
+  background: #fff;
+  border-radius: var(--radius-lg);
+  padding: 24px;
+  box-shadow: var(--shadow-card);
+  border: 1px solid rgba(15, 23, 42, 0.05);
+}
+.sat-tl-card h3 {
+  font-size: 16px;
+  margin-bottom: 18px;
+}
+.sat-tl-list {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.sat-tl-row {
+  display: flex;
+  gap: 12px;
+  align-items: flex-start;
+}
+.sat-tl-emoji {
+  font-size: 20px;
+  flex-shrink: 0;
+}
+.sat-tl-content p {
+  font-size: 13.5px;
+  font-weight: 500;
+  margin-bottom: 3px;
+}
+.sat-tl-content span {
+  font-size: 11.5px;
+  color: var(--text-secondary);
+}

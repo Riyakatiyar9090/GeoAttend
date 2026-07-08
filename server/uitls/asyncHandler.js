@@ -1,0 +1,14 @@
+/**
+ * Wraps an async route handler to eliminate try-catch boilerplate.
+ * Any rejected promise is forwarded to Express's global error handler.
+ *
+ * Usage:
+ *   router.get('/example', asyncHandler(async (req, res) => {
+ *     const data = await SomeModel.find();
+ *     res.json({ success: true, data });
+ *   }));
+ */
+const asyncHandler = (fn) => (req, res, next) =>
+  Promise.resolve(fn(req, res, next)).catch(next);
+
+module.exports = asyncHandler;

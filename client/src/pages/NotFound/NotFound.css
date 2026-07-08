@@ -1,0 +1,264 @@
+/* ── Page ── */
+.nf-page {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #f8fafc;
+  overflow: hidden;
+  padding: 24px;
+}
+
+/* ── Background ── */
+.nf-bg {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+}
+
+.nf-blob {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(90px);
+  opacity: 0.35;
+}
+.nf-blob-1 {
+  width: 400px;
+  height: 400px;
+  background: #2563eb;
+  top: -100px;
+  right: -80px;
+}
+.nf-blob-2 {
+  width: 360px;
+  height: 360px;
+  background: #06b6d4;
+  bottom: -80px;
+  left: -80px;
+}
+.nf-blob-3 {
+  width: 280px;
+  height: 280px;
+  background: #4f46e5;
+  top: 40%;
+  left: 40%;
+  transform: translate(-50%, -50%);
+}
+
+.nf-grid-pattern {
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(15, 23, 42, 0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(15, 23, 42, 0.04) 1px, transparent 1px);
+  background-size: 40px 40px;
+}
+
+/* ── Glass card ── */
+.nf-card {
+  position: relative;
+  z-index: 1;
+  background: rgba(255, 255, 255, 0.72);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  border: 1px solid rgba(255, 255, 255, 0.55);
+  border-radius: 24px;
+  padding: 56px 52px 44px;
+  max-width: 540px;
+  width: 100%;
+  text-align: center;
+  box-shadow:
+    0 8px 32px rgba(15, 23, 42, 0.1),
+    0 2px 8px rgba(15, 23, 42, 0.06),
+    0 0 0 1px rgba(255, 255, 255, 0.3) inset;
+}
+
+/* ── 404 number ── */
+.nf-number-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  margin-bottom: 24px;
+  user-select: none;
+}
+
+.nf-four-left,
+.nf-four-right {
+  font-family: "Poppins", sans-serif;
+  font-size: 96px;
+  font-weight: 800;
+  line-height: 1;
+  background: linear-gradient(135deg, #2563eb, #4f46e5);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  letter-spacing: -4px;
+}
+
+.nf-zero {
+  width: 88px;
+  height: 88px;
+  border-radius: 50%;
+  border: 7px solid transparent;
+  background:
+    linear-gradient(#fff, #fff) padding-box,
+    linear-gradient(135deg, #2563eb, #06b6d4) border-box;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow:
+    0 0 0 3px rgba(37, 99, 235, 0.1),
+    0 8px 24px rgba(37, 99, 235, 0.2);
+  flex-shrink: 0;
+}
+
+.nf-zero-inner {
+  width: 54px;
+  height: 54px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #f8fafc, #eff6ff);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.nf-zero-dot {
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #2563eb, #06b6d4);
+  box-shadow: 0 0 12px rgba(37, 99, 235, 0.5);
+}
+
+/* ── Divider ── */
+.nf-divider {
+  height: 2px;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(37, 99, 235, 0.25),
+    transparent
+  );
+  border-radius: 2px;
+  margin: 0 auto 24px;
+  width: 80%;
+  transform-origin: center;
+}
+
+/* ── Text ── */
+.nf-card h1 {
+  font-family: "Poppins", sans-serif;
+  font-size: 26px;
+  font-weight: 700;
+  color: #0f172a;
+  margin-bottom: 12px;
+}
+
+.nf-subtitle {
+  font-size: 15px;
+  color: #64748b;
+  line-height: 1.65;
+  margin-bottom: 36px;
+}
+
+/* ── Buttons ── */
+.nf-actions {
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-bottom: 28px;
+}
+
+.nf-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  height: 48px;
+  padding: 0 22px;
+  border-radius: 12px;
+  font-size: 14.5px;
+  font-weight: 600;
+  font-family: "Inter", sans-serif;
+  cursor: pointer;
+  transition:
+    box-shadow 0.25s ease,
+    transform 0.2s ease;
+}
+
+.nf-btn-primary {
+  background: linear-gradient(135deg, #2563eb, #4f46e5);
+  color: #fff;
+  box-shadow: 0 4px 16px rgba(37, 99, 235, 0.3);
+}
+.nf-btn-primary:hover {
+  box-shadow: 0 8px 24px rgba(37, 99, 235, 0.45);
+}
+
+.nf-btn-secondary {
+  background: rgba(37, 99, 235, 0.07);
+  color: #2563eb;
+}
+.nf-btn-secondary:hover {
+  background: rgba(37, 99, 235, 0.13);
+}
+
+.nf-btn-outline {
+  background: transparent;
+  border: 1.5px solid rgba(15, 23, 42, 0.14);
+  color: #64748b;
+}
+.nf-btn-outline:hover {
+  border-color: #0f172a;
+  color: #0f172a;
+}
+
+/* ── Hint ── */
+.nf-hint {
+  font-size: 13px;
+  color: #94a3b8;
+}
+.nf-hint span {
+  color: #2563eb;
+  font-weight: 600;
+  cursor: pointer;
+}
+.nf-hint span:hover {
+  text-decoration: underline;
+}
+
+/* ── Responsive ── */
+@media (max-width: 560px) {
+  .nf-card {
+    padding: 40px 28px 36px;
+  }
+  .nf-four-left,
+  .nf-four-right {
+    font-size: 70px;
+  }
+  .nf-zero {
+    width: 66px;
+    height: 66px;
+    border-width: 5px;
+  }
+  .nf-zero-inner {
+    width: 40px;
+    height: 40px;
+  }
+  .nf-zero-dot {
+    width: 10px;
+    height: 10px;
+  }
+  .nf-actions {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  .nf-btn {
+    justify-content: center;
+  }
+  .nf-card h1 {
+    font-size: 22px;
+  }
+}

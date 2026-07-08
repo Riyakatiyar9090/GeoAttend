@@ -38,6 +38,10 @@ import AttendanceHistory from "./pages/AttendanceHistory/AttendanceHistory";
 import AttendanceDetails from "./pages/AttendanceDetails/AttendanceDetails";
 import ManageStudents from "./pages/ManageStudents/ManageStudents";
 import StudentAnalytics from "./pages/StudentAnalytics/StudentAnalytics";
+import StudentNotifications from "./pages/StudentNotifications/StudentNotifications";
+import StudentProfile from "./pages/StudentProfile/StudentProfile";
+import StudentSettings from "./pages/StudentSettings/StudentSettings";
+import NotFound from "./pages/NotFound/NotFound";
 
 // ========================= Global Styles =========================
 import "./styles/globals.css";
@@ -92,12 +96,10 @@ function App() {
           <Route path="history/details/:id" element={<AttendanceDetails />} />
           <Route path="analytics" element={<StudentAnalytics />} />
           {/* Future Student Pages */}
-          {/*
-         
+
           <Route path="notifications" element={<StudentNotifications />} />
           <Route path="profile" element={<StudentProfile />} />
           <Route path="settings" element={<StudentSettings />} />
-          */}
         </Route>
 
         {/* ========================= TEACHER ========================= */}
@@ -124,6 +126,7 @@ function App() {
           <Route path="notifications" element={<TeacherNotifications />} />
           <Route path="settings" element={<TeacherSettings />} />
         </Route>
+        <Route path="*" element={<NotFound />} />
 
         {/* ========================= 404 ========================= */}
 
