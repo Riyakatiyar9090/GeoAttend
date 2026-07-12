@@ -2,7 +2,7 @@ const asyncHandler = require("../utils/asyncHandler");
 const sendResponse = require("../utils/sendResponse");
 const { AppError } = require("../middleware/errorMiddleware");
 const authService = require("../services/authService");
-const emailService = require("../services/emailService");
+const { sendWelcomeEmail } = require("../config/mailConfig");
 const User = require("../models/User");
 const {
   signAccessToken,
@@ -70,14 +70,14 @@ const verifyOTP = asyncHandler(async (req, res) => {
     user.status = "active";
     await user.save({ validateBeforeSave: false });
 
-    // Send welcome email asynchronously (don't await — keep response fast)
-    emailService
-      .sendWelcomeEmail({
-        name: user.firstName,
-        email: user.email,
-        role: user.role,
-      })
-      .catch((err) => console.error("Welcome email failed:", err.message));
+    // Send welcome email asynchronously
+    sendWelcomeEmail({
+      name: user.firstName,
+      email: user.email,
+      role: user.role,
+    }).catch((err) => {
+      console.error("Welcome email failed:", err.message);
+    });
   }
 
   sendResponse(res, {

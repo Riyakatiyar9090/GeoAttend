@@ -1,4 +1,3 @@
-const crypto = require("crypto");
 const User = require("../models/User");
 const Teacher = require("../models/Teacher");
 const Student = require("../models/Student");
@@ -6,7 +5,12 @@ const OTP = require("../models/OTP");
 const Notification = require("../models/Notification");
 const { AppError } = require("../middleware/errorMiddleware");
 const generateOTP = require("../utils/generateOTP");
-const emailService = require("./emailService");
+const {
+  sendOTPEmail,
+  sendWelcomeEmail,
+  sendPasswordResetEmail,
+  sendPasswordChangedEmail,
+} = require("../config/mailConfig");
 
 // ─────────────────────────────────────────
 // OTP helpers
@@ -17,6 +21,11 @@ const emailService = require("./emailService");
  */
 const createAndSendOTP = async ({ userId, name, email, purpose }) => {
   // Invalidate any existing unused OTP for same user + purpose
+  console.log("========== OTP DEBUG ==========");
+  console.log("Name:", name);
+  console.log("Email:", email);
+  console.log("Purpose:", purpose);
+  console.log("===============================");
   await OTP.deleteMany({ user: userId, purpose, isUsed: false });
 
   const { otp, hashedOTP, expiresAt } = generateOTP(6);
@@ -31,10 +40,20 @@ const createAndSendOTP = async ({ userId, name, email, purpose }) => {
   });
 
   // Send via email
+  // Send via email
   if (purpose === "email_verification") {
-    await emailService.sendVerificationOTP({ name, email, otp });
+    await sendOTPEmail({
+      name,
+      email,
+      otp,
+      purpose: "verify your email address",
+    });
   } else if (purpose === "password_reset") {
-    await emailService.sendPasswordResetOTP({ name, email, otp });
+    await sendPasswordResetEmail({
+      name,
+      email,
+      otp,
+    });
   }
 
   return otp; // Only returned in development for testing
@@ -88,30 +107,37 @@ const validateOTP = async ({ userId, rawOTP, purpose }) => {
  * Creates User + Student profile in a single flow.
  */
 const registerStudent = async (data) => {
-  const {
-    firstName,
-    lastName,
-    email,
-    password,
-    phone,
-    enrollmentNo,
-    rollNumber,
-    branch,
-    semester,
-    section,
-    college,
-    department,
-  } = data;
+  const { name, email, password, rollNumber, branch, year } = data;
+
+  // Split full name
+  const fullName = name.trim().replace(/\s+/g, " ");
+
+  const firstName = fullName.split(" ")[0];
+  const lastName = fullName.split(" ").slice(1).join(" ");
+
+  // Backend default values
+  const phone = "";
+  const enrollmentNo = rollNumber;
+  const semester = year;
+  const section = "";
+  const college = "";
+  const department = branch;
 
   // 1. Check for duplicate email / enrollment number
   const existingUser = await User.findOne({ email });
   if (existingUser)
     throw new AppError("An account with this email already exists.", 409);
 
-  const existingEnrollment = await Student.findOne({ enrollmentNo });
-  if (existingEnrollment)
-    throw new AppError("This enrollment number is already registered.", 409);
+  const existingStudent = await Student.findOne({
+    $or: [{ rollNumber }, { enrollmentNo }],
+  });
 
+  if (existingStudent) {
+    throw new AppError(
+      "A student with this Roll Number/Enrollment Number already exists.",
+      409,
+    );
+  }
   // 2. Create User document
   const user = await User.create({
     firstName,
@@ -155,19 +181,19 @@ const registerStudent = async (data) => {
  * Register a new teacher.
  */
 const registerTeacher = async (data) => {
-  const {
-    firstName,
-    lastName,
-    email,
-    password,
-    phone,
-    employeeId,
-    department,
-    designation,
-    subjects,
-    qualification,
-    college,
-  } = data;
+  const { name, email, password, employeeId, department, designation } = data;
+
+  // Split full name
+  const fullName = name.trim().replace(/\s+/g, " ");
+
+  const firstName = fullName.split(" ")[0];
+  const lastName = fullName.split(" ").slice(1).join(" ");
+
+  // Backend defaults
+  const phone = "";
+  const qualification = "";
+  const college = "";
+  const subjects = [];
 
   const existingUser = await User.findOne({ email });
   if (existingUser)
@@ -315,6 +341,10 @@ const resetPassword = async ({ email, otp, newPassword }) => {
   user.passwordResetToken = undefined;
   user.passwordResetExpires = undefined;
   await user.save();
+  await sendPasswordChangedEmail({
+    name: user.firstName,
+    email: user.email,
+  });
 
   // Notify user
   await Notification.send({

@@ -53,12 +53,15 @@ const handleJWTError = () =>
 // ─────────────────────────────────────────
 
 const sendErrorDev = (err, res) => {
-  res.status(err.statusCode).json({
+  console.error("========== FULL STACK ==========");
+  console.error(err.stack);
+  console.error("================================");
+
+  res.status(err.statusCode || 500).json({
     success: false,
     status: err.status,
     message: err.message,
     stack: err.stack,
-    error: err,
   });
 };
 
@@ -91,10 +94,15 @@ const globalErrorHandler = (err, req, res, next) => {
   err.statusCode = err.statusCode || 500;
   err.status = err.status || "error";
 
+  // 👇 Add this
+  console.log("\n========== SERVER ERROR ==========");
+  console.error(err);
+  console.error(err.stack);
+  console.log("==================================\n");
+
   if (process.env.NODE_ENV === "development") {
     sendErrorDev(err, res);
   } else {
-    // Clone the error so we don't mutate the original
     let error = Object.assign(Object.create(Object.getPrototypeOf(err)), err);
     error.message = err.message;
 

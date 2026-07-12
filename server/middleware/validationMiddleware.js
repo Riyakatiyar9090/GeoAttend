@@ -1,6 +1,9 @@
-const { body, validationResult } = require("express-validator");
-const { body, param, query } = require("express-validator");
-/**
+const {
+  body,
+  param,
+  query,
+  validationResult,
+} = require("express-validator"); /**
  * Run after validation chains — if any errors exist, respond 422
  * with a clean array of field → message pairs.
  */
@@ -69,95 +72,64 @@ const nameField = (field, label) =>
 // ─────────────────────────────────────────
 
 const validateStudentRegister = [
-  nameField("firstName", "First name"),
-  nameField("lastName", "Last name"),
-  emailField(),
-  passwordField(),
-  body("phone")
-    .optional()
-    .trim()
-    .matches(/^\+?[\d\s\-]{7,15}$/)
-    .withMessage("Please provide a valid phone number"),
-  body("enrollmentNo")
+  body("name")
     .trim()
     .notEmpty()
-    .withMessage("Enrollment number is required")
-    .isLength({ min: 3, max: 20 })
-    .withMessage("Enrollment number must be between 3 and 20 characters"),
+    .withMessage("Full name is required")
+    .isLength({ min: 2, max: 100 })
+    .withMessage("Name must be between 2 and 100 characters"),
+
+  emailField(),
+
+  passwordField(),
+
+  body("confirmPassword")
+    .notEmpty()
+    .withMessage("Confirm password is required")
+    .custom((value, { req }) => {
+      if (value !== req.body.password) {
+        throw new Error("Passwords do not match");
+      }
+      return true;
+    }),
+
+  body("rollNumber").trim().notEmpty().withMessage("Roll number is required"),
+
   body("branch").trim().notEmpty().withMessage("Branch is required"),
-  body("semester")
-    .optional()
-    .isIn(["1st", "2nd", "3rd", "4th", "5th", "6th", "7th", "8th"])
-    .withMessage("Invalid semester value"),
-  body("section")
-    .optional()
-    .trim()
-    .isLength({ max: 5 })
-    .withMessage("Section must be at most 5 characters"),
+
+  body("year").trim().notEmpty().withMessage("Year is required"),
+
   handleValidationErrors,
 ];
 
 const validateTeacherRegister = [
-  nameField("firstName", "First name"),
-  nameField("lastName", "Last name"),
+  body("name")
+    .trim()
+    .notEmpty()
+    .withMessage("Full name is required")
+    .isLength({ min: 2, max: 100 })
+    .withMessage("Name must be between 2 and 100 characters"),
+
   emailField(),
+
   passwordField(),
-  body("phone")
-    .optional()
-    .trim()
-    .matches(/^\+?[\d\s\-]{7,15}$/)
-    .withMessage("Please provide a valid phone number"),
-  body("employeeId")
-    .trim()
+
+  body("confirmPassword")
     .notEmpty()
-    .withMessage("Employee ID is required")
-    .isLength({ min: 3, max: 20 })
-    .withMessage("Employee ID must be between 3 and 20 characters"),
+    .withMessage("Confirm password is required")
+    .custom((value, { req }) => {
+      if (value !== req.body.password) {
+        throw new Error("Passwords do not match");
+      }
+      return true;
+    }),
+
+  body("employeeId").trim().notEmpty().withMessage("Employee ID is required"),
+
   body("department").trim().notEmpty().withMessage("Department is required"),
-  body("designation")
-    .optional()
-    .isIn([
-      "Lecturer",
-      "Assistant Professor",
-      "Associate Professor",
-      "Professor",
-      "Head of Department",
-      "Principal",
-      "Other",
-    ])
-    .withMessage("Invalid designation"),
-  handleValidationErrors,
-];
 
-const validateLogin = [
-  emailField(),
-  body("password").notEmpty().withMessage("Password is required"),
-  body("role")
-    .notEmpty()
-    .withMessage("Role is required")
-    .isIn(["student", "teacher", "admin"])
-    .withMessage("Role must be student, teacher or admin"),
-  handleValidationErrors,
-];
+  body("designation").trim().notEmpty().withMessage("Designation is required"),
 
-const validateVerifyOTP = [
-  emailField(),
-  otpField(),
-  body("purpose")
-    .notEmpty()
-    .withMessage("Purpose is required")
-    .isIn(["email_verification", "password_reset", "two_factor_auth", "login"])
-    .withMessage("Invalid OTP purpose"),
-  handleValidationErrors,
-];
-
-const validateResendOTP = [
-  emailField(),
-  body("purpose")
-    .notEmpty()
-    .withMessage("Purpose is required")
-    .isIn(["email_verification", "password_reset", "two_factor_auth", "login"])
-    .withMessage("Invalid OTP purpose"),
   handleValidationErrors,
 ];
 
@@ -614,6 +586,46 @@ const validateSendAnnouncement = [
     .isIn(["low", "normal", "high", "urgent"])
     .withMessage("Invalid priority"),
   body("actionUrl").optional().isString().isLength({ max: 200 }),
+  handleValidationErrors,
+];
+const validateLogin = [
+  body("email")
+    .trim()
+    .notEmpty()
+    .withMessage("Email is required")
+    .isEmail()
+    .withMessage("Please enter a valid email address"),
+
+  body("password").notEmpty().withMessage("Password is required"),
+
+  body("role")
+    .isIn(["student", "teacher", "admin"])
+    .withMessage("Invalid role"),
+
+  handleValidationErrors,
+];
+const validateVerifyOTP = [
+  emailField(),
+
+  otpField(),
+
+  body("purpose")
+    .notEmpty()
+    .withMessage("Purpose is required")
+    .isIn(["email_verification", "password_reset"])
+    .withMessage("Invalid OTP purpose"),
+
+  handleValidationErrors,
+];
+const validateResendOTP = [
+  emailField(),
+
+  body("purpose")
+    .notEmpty()
+    .withMessage("Purpose is required")
+    .isIn(["email_verification", "password_reset"])
+    .withMessage("Invalid OTP purpose"),
+
   handleValidationErrors,
 ];
 

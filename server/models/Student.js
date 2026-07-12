@@ -110,6 +110,15 @@ const studentSchema = new mongoose.Schema(
       country: { type: String, trim: true, default: "India" },
       zip: { type: String, trim: true },
     },
+    // ── ID Document (Cloudinary) ──────────────
+    idDocument: {
+      public_id: { type: String, default: null },
+      url: { type: String, default: null },
+      format: { type: String, default: null }, // 'jpg' | 'png' | 'pdf'
+      uploadedAt: { type: Date, default: null },
+      fileName: { type: String, default: null },
+      fileSizeMB: { type: Number, default: null },
+    },
   },
   {
     timestamps: true,

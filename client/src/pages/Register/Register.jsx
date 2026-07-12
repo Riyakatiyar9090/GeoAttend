@@ -1,3 +1,4 @@
+import axios from "axios";
 import { useState } from "react";
 import { useNavigate, useSearchParams } from "react-router-dom";
 import { motion } from "framer-motion";
@@ -102,12 +103,62 @@ export default function Register() {
     try {
       // TODO: replace with real API call, e.g.
       // await axios.post('/api/auth/register', { ...form, role });
-      await new Promise((resolve) => setTimeout(resolve, 1200));
+      const payload =
+        role === "student"
+          ? {
+              firstName: form.name.split(" ")[0],
+              lastName: form.name.split(" ").slice(1).join(" "),
+              email: form.email,
+              password: form.password,
+              rollNumber: form.rollNumber,
+              branch: form.branch,
+              semester: form.year,
+
+              // Temporary values (until you add these fields to the form)
+              enrollmentNo: "ENR" + Date.now(),
+              section: "A",
+              college: "GL Bajaj",
+              department: "CSE",
+              phone: "9999999999",
+            }
+          : {
+              firstName: form.name.split(" ")[0],
+              lastName: form.name.split(" ").slice(1).join(" "),
+              email: form.email,
+              password: form.password,
+              employeeId: form.employeeId,
+              department: form.department,
+              designation: form.designation,
+
+              qualification: "M.Tech",
+              college: "GL Bajaj",
+              phone: "9999999999",
+              subjects: [],
+            };
+
+      const endpoint =
+        role === "student"
+          ? "http://localhost:5000/api/v1/auth/register/student"
+          : "http://localhost:5000/api/v1/auth/register/teacher";
+
+      const response = await axios.post(endpoint, payload);
+
+      console.log(response.data);
+
       navigate("/verify-otp", {
-        state: { email: form.email, role, name: form.name },
+        state: {
+          email: form.email,
+          role,
+          name: form.name,
+        },
       });
     } catch (err) {
-      setErrors({ form: "Something went wrong. Please try again." });
+      console.log("Axios Error:", err);
+      console.log("Response:", err.response?.data);
+
+      setErrors({
+        form: err.response?.data?.message || err.message,
+      });
     } finally {
       setLoading(false);
     }

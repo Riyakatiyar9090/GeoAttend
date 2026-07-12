@@ -1,0 +1,82 @@
+# render.yaml — Render deployment configuration
+# Docs: https://render.com/docs/yaml-spec
+
+services:
+  - type: web
+    name: geoattend-api
+    runtime: node
+    region: oregon # or: singapore, frankfurt, ohio, virginia
+    plan: starter # free | starter | standard | pro
+
+    # ── Build ──────────────────────────────────
+    buildCommand: npm install --production=false
+    startCommand: npm start
+
+    # ── Health check ────────────────────────────
+    healthCheckPath: /health
+
+    # ── Auto-deploy ─────────────────────────────
+    autoDeploy: true
+    branch: main
+
+    # ── Environment ─────────────────────────────
+    envVars:
+      - key: NODE_ENV
+        value: production
+
+      - key: PORT
+        value: 10000 # Render assigns this port
+
+      # MongoDB Atlas — set in Render dashboard (secret)
+      - key: MONGO_URI
+        sync: false
+
+      # JWT secrets — set in Render dashboard (secret)
+      - key: JWT_SECRET
+        sync: false
+      - key: JWT_EXPIRE
+        value: 7d
+      - key: JWT_REFRESH_SECRET
+        sync: false
+      - key: JWT_REFRESH_EXPIRE
+        value: 30d
+      - key: JWT_COOKIE_EXPIRE
+        value: "7"
+
+      # Cloudinary — set in Render dashboard (secret)
+      - key: CLOUDINARY_CLOUD_NAME
+        sync: false
+      - key: CLOUDINARY_API_KEY
+        sync: false
+      - key: CLOUDINARY_API_SECRET
+        sync: false
+
+      # SMTP — set in Render dashboard (secret)
+      - key: SMTP_HOST
+        value: smtp.gmail.com
+      - key: SMTP_PORT
+        value: "587"
+      - key: SMTP_EMAIL
+        sync: false
+      - key: SMTP_PASSWORD
+        sync: false
+      - key: FROM_EMAIL
+        value: no-reply@geoattend.app
+      - key: FROM_NAME
+        value: GeoAttend
+
+      # Client URLs
+      - key: CLIENT_URL
+        value: https://geoattend.vercel.app
+      - key: CLIENT_URL_PROD
+        value: https://geoattend.vercel.app
+
+      # App info
+      - key: APP_NAME
+        value: GeoAttend API
+      - key: APP_VERSION
+        value: 1.0.0
+
+      # Logging
+      - key: LOG_LEVEL
+        value: info

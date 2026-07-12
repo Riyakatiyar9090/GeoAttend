@@ -1,89 +1,133 @@
 /**
- * server.js — Entry point.
+ * server.js — Process entry point.
  *
- * Responsibilities:
- *   1. Load environment variables FIRST
- *   2. Connect to MongoDB
- *   3. Start the HTTP server
- *   4. Handle unhandled rejections and uncaught exceptions gracefully
+ * Loads environment, connects database,
+ * starts the HTTP server, starts background jobs,
+ * handles process-level signals.
  */
 
-// Load .env before anything else — critical
+// ── Load .env BEFORE anything else ──────────────
 require("dotenv").config();
 
+const http = require("http");
 const app = require("./app");
 const connectDB = require("./config/database");
-
-const PORT = process.env.PORT || 5000;
+const logger = require("./utils/logger");
+const { startQRExpiryJob, stopQRExpiryJob } = require("./jobs/qrExpiryJob");
+const { verifyMailConnection } = require("./config/mailConfig");
+const PORT = parseInt(process.env.PORT, 10) || 5000;
 
 // ─────────────────────────────────────────
 // Handle uncaught synchronous exceptions.
-// These are programming errors — log and exit.
+// Log, then exit — PM2 / Render will restart.
 // ─────────────────────────────────────────
 process.on("uncaughtException", (error) => {
-  console.error("💥  UNCAUGHT EXCEPTION — shutting down...");
-  console.error(error.name, error.message);
+  logger.error("UNCAUGHT EXCEPTION — shutting down", {
+    name: error.name,
+    message: error.message,
+    stack: error.stack,
+  });
   process.exit(1);
 });
 
 // ─────────────────────────────────────────
-// Connect to database, then start server
+// Start server
 // ─────────────────────────────────────────
 const startServer = async () => {
+  // 1. Connect to MongoDB Atlas
   await connectDB();
+  // 2. Verify SMTP connection (doesn't stop server if email isn't configured)
+  await verifyMailConnection();
 
-  const server = app.listen(PORT, () => {
-    console.log("─────────────────────────────────────────");
-    console.log(`🚀  GeoAttend API running`);
-    console.log(`    Mode    : ${process.env.NODE_ENV}`);
-    console.log(`    Port    : ${PORT}`);
-    console.log(`    URL     : http://localhost:${PORT}`);
-    console.log(`    Health  : http://localhost:${PORT}/health`);
-    console.log("─────────────────────────────────────────");
+  // 2. Start background jobs
+  startQRExpiryJob(30_000); // Expire QR tokens every 30s
+
+  // 3. Create HTTP server from Express app
+  const server = http.createServer(app);
+
+  // 4. Configure keep-alive for production
+  server.keepAliveTimeout = 65_000; // Must be > load balancer idle timeout
+  server.headersTimeout = 66_000; // Slightly above keepAliveTimeout
+
+  // 5. Start listening
+  server.listen(PORT, () => {
+    logger.info("─────────────────────────────────────────");
+    logger.info(`GeoAttend API running`, {
+      port: PORT,
+      environment: process.env.NODE_ENV,
+      version: process.env.APP_VERSION || "1.0.0",
+      pid: process.pid,
+      nodeVersion: process.version,
+      url: `http://localhost:${PORT}`,
+      health: `http://localhost:${PORT}/health`,
+    });
+    logger.info("─────────────────────────────────────────");
   });
-  // Add after connectDB() succeeds, inside startServer():
-  const { startQRExpiryJob, stopQRExpiryJob } = require("./jobs/qrExpiryJob");
-
-  const startServer = async () => {
-    await connectDB();
-
-    // Start QR expiry cleanup job
-    startQRExpiryJob(30_000); // Run every 30 seconds
-
-    const server = app.listen(PORT, () => {
-      console.log(`🚀  GeoAttend API running on port ${PORT}`);
-    });
-
-    // Graceful shutdown — stop job before closing
-    process.on("SIGTERM", () => {
-      stopQRExpiryJob();
-      server.close(() => process.exit(0));
-    });
-  };
 
   // ─────────────────────────────────────────
   // Handle unhandled promise rejections.
-  // Close server gracefully before exiting.
   // ─────────────────────────────────────────
-  process.on("unhandledRejection", (error) => {
-    console.error("💥  UNHANDLED REJECTION — shutting down...");
-    console.error(error.name, error.message);
+  process.on("unhandledRejection", (reason, promise) => {
+    logger.error("UNHANDLED REJECTION", {
+      reason: reason?.message || reason,
+      stack: reason?.stack,
+      promise: String(promise),
+    });
 
-    // Allow in-flight requests to complete before closing
+    // Give in-flight requests time to complete
     server.close(() => {
+      logger.info("Server closed after unhandledRejection.");
       process.exit(1);
     });
+
+    // Force exit if server doesn't close in 10s
+    setTimeout(() => process.exit(1), 10_000).unref();
   });
 
   // ─────────────────────────────────────────
-  // Graceful shutdown on SIGTERM (e.g. Docker stop, PM2 reload)
+  // Graceful shutdown on SIGTERM (Render sends this before stop).
   // ─────────────────────────────────────────
   process.on("SIGTERM", () => {
-    console.log("👋  SIGTERM received — shutting down gracefully...");
-    server.close(() => {
-      console.log("💤  Process terminated.");
+    logger.info("SIGTERM received — beginning graceful shutdown...");
+
+    stopQRExpiryJob();
+
+    server.close(async () => {
+      logger.info("HTTP server closed — no more new connections.");
+
+      try {
+        const mongoose = require("mongoose");
+        await mongoose.connection.close();
+        logger.info("MongoDB connection closed.");
+      } catch (err) {
+        logger.error("Error closing MongoDB:", { error: err.message });
+      }
+
+      logger.info("Graceful shutdown complete.");
+      process.exit(0);
     });
+
+    // Force exit after 30s if graceful shutdown hangs
+    setTimeout(() => {
+      logger.error("Graceful shutdown timed out — forcing exit.");
+      process.exit(1);
+    }, 30_000).unref();
   });
+
+  // SIGINT — Ctrl+C in local dev
+  process.on("SIGINT", () => {
+    logger.info("SIGINT received — shutting down for local dev.");
+    stopQRExpiryJob();
+    server.close(() => process.exit(0));
+  });
+
+  return server;
 };
 
-startServer();
+startServer().catch((err) => {
+  logger.error("Failed to start server", {
+    error: err.message,
+    stack: err.stack,
+  });
+  process.exit(1);
+});
