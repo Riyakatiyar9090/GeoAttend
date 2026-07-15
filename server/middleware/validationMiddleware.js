@@ -72,36 +72,39 @@ const nameField = (field, label) =>
 // ─────────────────────────────────────────
 
 const validateStudentRegister = [
-  body("name")
+  body("firstName")
     .trim()
     .notEmpty()
-    .withMessage("Full name is required")
-    .isLength({ min: 2, max: 100 })
-    .withMessage("Name must be between 2 and 100 characters"),
+    .withMessage("First name is required")
+    .isLength({ min: 2, max: 50 }),
+
+  body("lastName").optional().trim().isLength({ max: 50 }),
 
   emailField(),
 
   passwordField(),
 
-  body("confirmPassword")
-    .notEmpty()
-    .withMessage("Confirm password is required")
-    .custom((value, { req }) => {
-      if (value !== req.body.password) {
-        throw new Error("Passwords do not match");
-      }
-      return true;
-    }),
+  body("phone").optional(),
 
   body("rollNumber").trim().notEmpty().withMessage("Roll number is required"),
 
+  body("enrollmentNo")
+    .trim()
+    .notEmpty()
+    .withMessage("Enrollment number is required"),
+
   body("branch").trim().notEmpty().withMessage("Branch is required"),
 
-  body("year").trim().notEmpty().withMessage("Year is required"),
+  body("semester").trim().notEmpty().withMessage("Semester is required"),
+
+  body("section").optional(),
+
+  body("college").optional(),
+
+  body("department").optional(),
 
   handleValidationErrors,
 ];
-
 const validateTeacherRegister = [
   body("name")
     .trim()
@@ -113,16 +116,6 @@ const validateTeacherRegister = [
   emailField(),
 
   passwordField(),
-
-  body("confirmPassword")
-    .notEmpty()
-    .withMessage("Confirm password is required")
-    .custom((value, { req }) => {
-      if (value !== req.body.password) {
-        throw new Error("Passwords do not match");
-      }
-      return true;
-    }),
 
   body("employeeId").trim().notEmpty().withMessage("Employee ID is required"),
 

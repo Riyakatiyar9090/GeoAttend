@@ -19,12 +19,26 @@ import "./Sidebar.css";
 
 const menuItems = [
   { label: "Dashboard", icon: <FiGrid />, to: "" },
-  { label: "Attendance", icon: <FiCheckSquare />, to: "attendance" },
+
+  // Attendance History
+  { label: "Attendance", icon: <FiCheckSquare />, to: "history" },
+
+  // Active Sessions
   { label: "Sessions", icon: <FiCalendar />, to: "sessions" },
+
+  // QR Scanner
   { label: "QR Scanner", icon: <FiMaximize />, to: "qr-scanner" },
+
+  // Analytics
   { label: "Analytics", icon: <FiBarChart2 />, to: "analytics" },
+
+  // Notifications
   { label: "Notifications", icon: <FiBell />, to: "notifications" },
+
+  // Profile
   { label: "Profile", icon: <FiUser />, to: "profile" },
+
+  // Settings
   { label: "Settings", icon: <FiSettings />, to: "settings" },
 ];
 

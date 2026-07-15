@@ -126,18 +126,16 @@ userSchema.virtual("avatarUrl").get(function () {
 // ─────────────────────────────────────────
 // Pre-save middleware — hash password
 // ─────────────────────────────────────────
-userSchema.pre("save", async function (next) {
+userSchema.pre("save", async function () {
   // Only hash when password field is modified
-  if (!this.isModified("password")) return next();
+  if (!this.isModified("password")) return;
 
   this.password = await bcrypt.hash(this.password, 12);
 
-  // Remove passwordChangedAt on first save
+  // Update passwordChangedAt only when updating password
   if (!this.isNew) {
-    this.passwordChangedAt = Date.now() - 1000; // 1s buffer for JWT iat
+    this.passwordChangedAt = Date.now() - 1000;
   }
-
-  next();
 });
 
 // ─────────────────────────────────────────

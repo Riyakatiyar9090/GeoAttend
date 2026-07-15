@@ -16,6 +16,11 @@ export default function NotificationCard({
   onDelete,
   index,
 }) {
+  // ADD THESE 4 LINES
+  if (!notification) {
+    return null;
+  }
+
   const cc = categoryColors[notification.category] || categoryColors.System;
 
   return (

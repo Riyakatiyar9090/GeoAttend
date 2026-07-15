@@ -106,28 +106,52 @@ const validateOTP = async ({ userId, rawOTP, purpose }) => {
  * Register a new student.
  * Creates User + Student profile in a single flow.
  */
+/**
+ * Register a new student.
+ * Creates User + Student profile in a single flow.
+ */
 const registerStudent = async (data) => {
-  const { name, email, password, rollNumber, branch, year } = data;
+  const {
+    firstName,
+    lastName,
+    email,
+    password,
+    phone,
+    enrollmentNo,
+    rollNumber,
+    branch,
+    semester,
+    section,
+    college,
+    department,
+  } = data;
 
-  // Split full name
-  const fullName = name.trim().replace(/\s+/g, " ");
+  // Convert semester number to enum value expected by Student schema
+  const semesterMap = {
+    1: "1st",
+    2: "2nd",
+    3: "3rd",
+    4: "4th",
+    5: "5th",
+    6: "6th",
+    7: "7th",
+    8: "8th",
+  };
 
-  const firstName = fullName.split(" ")[0];
-  const lastName = fullName.split(" ").slice(1).join(" ");
+  const formattedSemester = semesterMap[String(semester)];
 
-  // Backend default values
-  const phone = "";
-  const enrollmentNo = rollNumber;
-  const semester = year;
-  const section = "";
-  const college = "";
-  const department = branch;
+  if (!formattedSemester) {
+    throw new AppError("Invalid semester.", 400);
+  }
 
-  // 1. Check for duplicate email / enrollment number
+  // Check duplicate email
   const existingUser = await User.findOne({ email });
-  if (existingUser)
-    throw new AppError("An account with this email already exists.", 409);
 
+  if (existingUser) {
+    throw new AppError("An account with this email already exists.", 409);
+  }
+
+  // Check duplicate student
   const existingStudent = await Student.findOne({
     $or: [{ rollNumber }, { enrollmentNo }],
   });
@@ -138,7 +162,9 @@ const registerStudent = async (data) => {
       409,
     );
   }
-  // 2. Create User document
+
+  // Create User
+  console.log("STEP 1: Creating user...");
   const user = await User.create({
     firstName,
     lastName,
@@ -146,33 +172,42 @@ const registerStudent = async (data) => {
     password,
     phone,
     role: "student",
-    status: "pending", // Active after email verification
+    status: "pending",
     profileModel: "Student",
   });
 
-  // 3. Create Student profile document
+  // Create Student profile
+  console.log("STEP 2: User created", user._id);
+
+  // Before Student.create()
+  console.log("STEP 3: Creating student profile...");
   const studentProfile = await Student.create({
     user: user._id,
     enrollmentNo,
     rollNumber,
     branch,
-    semester,
+    semester: formattedSemester,
     section,
     college,
     department,
   });
 
-  // 4. Link profile back to User
+  // Link profile to user
   user.profileRef = studentProfile._id;
   await user.save({ validateBeforeSave: false });
 
-  // 5. Send verification OTP
+  // Send OTP
+  console.log("STEP 4: Student profile created");
+
+  // Before sending OTP
+  console.log("STEP 5: Sending OTP...");
   await createAndSendOTP({
     userId: user._id,
     name: user.firstName,
     email: user.email,
     purpose: "email_verification",
   });
+  console.log("STEP 6: OTP sent");
 
   return user;
 };
@@ -181,19 +216,19 @@ const registerStudent = async (data) => {
  * Register a new teacher.
  */
 const registerTeacher = async (data) => {
-  const { name, email, password, employeeId, department, designation } = data;
-
-  // Split full name
-  const fullName = name.trim().replace(/\s+/g, " ");
-
-  const firstName = fullName.split(" ")[0];
-  const lastName = fullName.split(" ").slice(1).join(" ");
-
-  // Backend defaults
-  const phone = "";
-  const qualification = "";
-  const college = "";
-  const subjects = [];
+  const {
+    firstName,
+    lastName,
+    email,
+    password,
+    phone,
+    employeeId,
+    department,
+    designation,
+    qualification,
+    college,
+    subjects,
+  } = data;
 
   const existingUser = await User.findOne({ email });
   if (existingUser)

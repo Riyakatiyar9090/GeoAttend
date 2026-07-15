@@ -1,4 +1,5 @@
 import { useState, useCallback } from "react";
+import axios from "axios";
 import { useNavigate, useLocation } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
 import { FiArrowRight, FiShield } from "react-icons/fi";
@@ -49,17 +50,19 @@ export default function OTPVerification() {
     try {
       // TODO: replace with real API call, e.g.
       // await axios.post('/api/auth/verify-otp', { email, otp });
-      await new Promise((resolve, reject) =>
-        setTimeout(() => (otp === "000000" ? reject() : resolve()), 1200),
-      );
+      await axios.post("http://localhost:5000/api/v1/auth/verify-otp", {
+        email,
+        otp,
+        purpose: "email_verification",
+      });
       setVerified(true);
       setTimeout(() => {
-        navigate(
-          role === "teacher" ? "/teacher/dashboard" : "/student/dashboard",
-        );
+        navigate(role === "teacher" ? "/teacher" : "/student");
       }, 1800);
-    } catch {
-      setError("Incorrect code. Please check and try again.");
+    } catch (err) {
+      setError(
+        err.response?.data?.message || "Verification failed. Please try again.",
+      );
       setOtp("");
     } finally {
       setLoading(false);
@@ -69,18 +72,21 @@ export default function OTPVerification() {
   const handleResend = async () => {
     setResending(true);
     try {
-      // TODO: replace with real API call, e.g.
-      // await axios.post('/api/auth/resend-otp', { email });
-      await new Promise((resolve) => setTimeout(resolve, 900));
+      await axios.post("http://localhost:5000/api/v1/auth/resend-otp", {
+        email,
+        purpose: "email_verification",
+      });
+
       setOtp("");
       setError("");
       setExpired(false);
       setRestartKey((k) => k + 1);
       showToast("A new code has been sent to your email");
-    } catch {
-      showToast("Could not resend code. Please try again.");
-    } finally {
-      setResending(false);
+    } catch (err) {
+      showToast(
+        err.response?.data?.message ||
+          "Could not resend code. Please try again.",
+      );
     }
   };
 

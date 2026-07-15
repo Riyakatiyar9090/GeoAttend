@@ -50,10 +50,13 @@ export default function Login() {
     try {
       // TODO: replace with real API call, e.g.
       // const res = await axios.post('/api/auth/login', { ...form, role });
-      await new Promise((resolve) => setTimeout(resolve, 1200));
-      navigate(
-        role === "teacher" ? "/teacher/dashboard" : "/student/dashboard",
-      );
+      const res = await axios.post("http://localhost:5000/api/v1/auth/login", {
+        email: form.email,
+        password: form.password,
+        role,
+      });
+
+      navigate(role === "teacher" ? "/teacher" : "/student");
     } catch (err) {
       setErrors({ form: "Invalid email or password. Please try again." });
     } finally {

@@ -71,22 +71,34 @@ const attendanceRecords = [
 
 const notifications = [
   {
-    type: "session",
+    id: 1,
+    icon: "📚",
     title: "DBMS attendance session is now live",
-    time: "2m ago",
-    unread: true,
+    desc: "Join now to mark your attendance.",
+    category: "Attendance",
+    date: "Jul 14",
+    time: "2 min ago",
+    read: false,
   },
   {
-    type: "reminder",
-    title: "Don't forget to mark today's attendance",
-    time: "1h ago",
-    unread: true,
+    id: 2,
+    icon: "⏰",
+    title: "Don't forget today's attendance",
+    desc: "Your OS class starts in 10 minutes.",
+    category: "Sessions",
+    date: "Jul 14",
+    time: "1 hour ago",
+    read: false,
   },
   {
-    type: "announcement",
-    title: "Mid-sem schedule has been updated",
-    time: "3h ago",
-    unread: false,
+    id: 3,
+    icon: "📢",
+    title: "Mid Semester Schedule Updated",
+    desc: "Please check the latest timetable.",
+    category: "Announcements",
+    date: "Jul 13",
+    time: "Yesterday",
+    read: true,
   },
 ];
 
@@ -166,7 +178,7 @@ export default function StudentDashboard() {
             title="Attendance History"
             description="Review your full attendance record."
             gradient="linear-gradient(135deg,#4F46E5,#0F172A)"
-            onClick={() => navigate("/student/attendance")}
+            onClick={() => navigate("/student/history")}
             index={2}
           />
           <QuickActionCard
@@ -201,7 +213,17 @@ export default function StudentDashboard() {
             today={today.getDate()}
             sessionDays={[2, 5, 9, 14, 18, 23, 27]}
           />
-          <NotificationCard notifications={notifications} />
+          <div className="notifications-list">
+            {notifications.map((notification, index) => (
+              <NotificationCard
+                key={index}
+                notification={notification}
+                index={index}
+                onMarkRead={() => {}}
+                onDelete={() => {}}
+              />
+            ))}
+          </div>
           <ProfileCard
             student={student}
             onEdit={() => navigate("/student/profile")}
